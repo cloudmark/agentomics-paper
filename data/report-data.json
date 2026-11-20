@@ -1,0 +1,3667 @@
+{
+ "cells": [
+  {
+   "model": "Claude Opus 5.5",
+   "key": "opus-5-5",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.9029,
+   "test_acc": 0.8212,
+   "test_auroc": 0.8974,
+   "train_acc": 0.8417,
+   "val": [
+    0.8719,
+    0.8861,
+    0.8908
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 1.57,
+   "calls": 23,
+   "time": 3.9,
+   "model_time": 2.1,
+   "tools_time": 1.8,
+   "session": "opus-5-5-skill-none",
+   "input_tokens": 328237,
+   "cached_tokens": 0,
+   "output_tokens": 12674,
+   "reasoning_tokens": 1248
+  },
+  {
+   "model": "Claude Opus 5.5",
+   "key": "opus-5-5",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.91,
+   "test_acc": 0.835,
+   "test_auroc": 0.9039,
+   "train_acc": 0.8851,
+   "val": [
+    0.8757,
+    0.8898,
+    0.9017
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": "closed by the driving script: prediction files written, run not back to idle",
+   "cost": 10.14,
+   "calls": 63,
+   "time": 58.8,
+   "model_time": 8.5,
+   "tools_time": 50.3,
+   "session": "opus-5-5-skill-high",
+   "input_tokens": 2299400,
+   "cached_tokens": 0,
+   "output_tokens": 47234,
+   "reasoning_tokens": 11811
+  },
+  {
+   "model": "Claude Opus 5.5",
+   "key": "opus-5-5",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.8986,
+   "test_acc": 0.8222,
+   "test_auroc": 0.8923,
+   "train_acc": 0.8538,
+   "val": [
+    0.8597,
+    0.8649,
+    0.8902
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": "run with reasoning_effort minimal, the lowest the provider accepted on 21 November 2026, after it stopped accepting none",
+   "cost": 3.44,
+   "calls": 70,
+   "time": 14.0,
+   "model_time": 7.7,
+   "tools_time": 6.4,
+   "session": "opus-5-5-sm-none",
+   "input_tokens": 643728,
+   "cached_tokens": 0,
+   "output_tokens": 43394,
+   "reasoning_tokens": 2181
+  },
+  {
+   "model": "Claude Opus 5.5",
+   "key": "opus-5-5",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.9068,
+   "test_acc": 0.833,
+   "test_auroc": 0.9009,
+   "train_acc": 0.9303,
+   "val": [
+    0.8813,
+    0.895,
+    0.8961
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 16.17,
+   "calls": 159,
+   "time": 104.6,
+   "model_time": 28.2,
+   "tools_time": 76.4,
+   "session": "opus-5-5-sm-high",
+   "input_tokens": 3196457,
+   "cached_tokens": 0,
+   "output_tokens": 169077,
+   "reasoning_tokens": 33663
+  },
+  {
+   "model": "Claude Fable 5.2",
+   "key": "fable-5-2",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.8945,
+   "test_acc": 0.8075,
+   "test_auroc": 0.8853,
+   "train_acc": 0.8931,
+   "val": [
+    0.8482,
+    0.8948,
+    0.8942
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": "run still showed as running an hour after both prediction files were written; stopped by the driving script",
+   "cost": 7.72,
+   "calls": 32,
+   "time": 32.5,
+   "model_time": 5.6,
+   "tools_time": 26.9,
+   "session": "fable-5-2-skill-none",
+   "input_tokens": 824208,
+   "cached_tokens": 0,
+   "output_tokens": 28198,
+   "reasoning_tokens": 7710
+  },
+  {
+   "model": "Claude Fable 5.2",
+   "key": "fable-5-2",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.9063,
+   "test_acc": 0.8202,
+   "test_auroc": 0.8972,
+   "train_acc": 0.8451,
+   "val": [
+    0.8671,
+    0.889,
+    0.8993
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": "test predictions written; train predictions file missing",
+   "cost": 18.52,
+   "calls": 46,
+   "time": 34.2,
+   "model_time": 14.0,
+   "tools_time": 20.2,
+   "session": "fable-5-2-skill-high",
+   "input_tokens": 1800023,
+   "cached_tokens": 0,
+   "output_tokens": 73116,
+   "reasoning_tokens": 34035,
+   "pick": "2"
+  },
+  {
+   "model": "Claude Fable 5.2",
+   "key": "fable-5-2",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.9121,
+   "test_acc": 0.833,
+   "test_auroc": 0.9036,
+   "train_acc": 0.8624,
+   "val": [
+    0.8812,
+    0.8943,
+    0.8991
+   ],
+   "recovered": true,
+   "partial": false,
+   "note": "recovered: rerun on Nov 19 with more container memory (peak 1.4 GiB) after a first attempt's container was replaced mid-CNN (that attempt's cost is counted as an attempt); all 3 iterations ran, best/inference.py failed to import features at the final step; best (iteration 2) scored outside the run",
+   "cost": 15.22,
+   "calls": 84,
+   "time": 109.3,
+   "model_time": 18.8,
+   "tools_time": 90.5,
+   "session": "fable-5-2-sm-none",
+   "input_tokens": 1376274,
+   "output_tokens": 105317,
+   "cached_tokens": 0,
+   "reasoning_tokens": 13680
+  },
+  {
+   "model": "Claude Fable 5.2",
+   "key": "fable-5-2",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.9022,
+   "test_acc": 0.8084,
+   "test_auroc": 0.8949,
+   "train_acc": 0.8704,
+   "val": [
+    0.8731,
+    0.8827,
+    0.8801
+   ],
+   "recovered": true,
+   "partial": false,
+   "note": "recovered: two iterations of one run (7f6d37e7), which was stopped during its third, and the finished first iteration of a second run of the same configuration (2ccf9990); the selected model (iteration 1 of the first run) was scored outside the run; cost, calls and time are those of both runs",
+   "cost": 71.21,
+   "calls": 214,
+   "time": 175.3,
+   "model_time": 81.3,
+   "tools_time": 94.0,
+   "session": "fable-5-2-sm-high",
+   "sessions": [
+    "fable-5-2-sm-high",
+    "2ccf9990"
+   ]
+  },
+  {
+   "model": "Gemini 4 Hydrogen",
+   "key": "gemini-4-hydrogen",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.8863,
+   "test_acc": 0.8084,
+   "test_auroc": 0.8875,
+   "train_acc": 0.983,
+   "val": [
+    null,
+    null,
+    null,
+    null,
+    0.8753
+   ],
+   "recovered": true,
+   "partial": false,
+   "note": "recovered from disk: iterations 1-4 failed their checks (file names, CLI args, CSV columns); iteration 5 passed (val 0.875). Its progress reports were lost when the agent service stalled, so the test step never ran; iteration 5 was run on the test inputs outside the run. It ran its scripts in the skill's own environment, not a workspace .venv.",
+   "cost": 0.39,
+   "calls": 51,
+   "time": 18.4,
+   "model_time": 3.9,
+   "tools_time": 14.6,
+   "session": "gemini-4-hydrogen-skill-none",
+   "input_tokens": 644267,
+   "cached_tokens": 494234,
+   "output_tokens": 16638,
+   "reasoning_tokens": 1186
+  },
+  {
+   "model": "Gemini 4 Hydrogen",
+   "key": "gemini-4-hydrogen",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.9065,
+   "test_acc": 0.832,
+   "test_auroc": 0.899,
+   "train_acc": 0.8756,
+   "val": [
+    0.8706,
+    0.8932,
+    0.8993
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 1.63,
+   "calls": 87,
+   "time": 21.9,
+   "model_time": 9.9,
+   "tools_time": 12.0,
+   "session": "gemini-4-hydrogen-skill-high",
+   "input_tokens": 4679438,
+   "cached_tokens": 4168697,
+   "output_tokens": 73551,
+   "reasoning_tokens": 2738
+  },
+  {
+   "model": "Gemini 4 Hydrogen",
+   "key": "gemini-4-hydrogen",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.8803,
+   "test_acc": 0.7898,
+   "test_auroc": 0.878,
+   "train_acc": 0.877,
+   "val": [
+    0.7084,
+    0.5059,
+    0.8724
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": "run with reasoning_effort minimal, the lowest the provider accepted on 21 November 2026, after it stopped accepting none",
+   "cost": 0.73,
+   "calls": 94,
+   "time": 9.5,
+   "model_time": 6.8,
+   "tools_time": 2.8,
+   "session": "gemini-4-hydrogen-sm-none",
+   "input_tokens": 578583,
+   "cached_tokens": 302549,
+   "output_tokens": 39292,
+   "reasoning_tokens": 8743
+  },
+  {
+   "model": "Gemini 4 Hydrogen",
+   "key": "gemini-4-hydrogen",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.9063,
+   "test_acc": 0.833,
+   "test_auroc": 0.8972,
+   "train_acc": 0.8383,
+   "val": [
+    0.8756,
+    0.8908,
+    0.891
+   ],
+   "recovered": true,
+   "partial": false,
+   "note": "recovered: the runtime ran out of memory after its 3 iterations, at its final step; best (iteration 2) scored outside the run",
+   "cost": 4.94,
+   "calls": 245,
+   "time": 62.3,
+   "model_time": 41.8,
+   "tools_time": 20.5,
+   "session": "gemini-4-hydrogen-sm-high"
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.8441,
+   "test_acc": 0.7515,
+   "test_auroc": 0.8376,
+   "train_acc": 0.7816,
+   "val": [
+    0.6815,
+    0.8422,
+    0.8411
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 0.25,
+   "calls": 12,
+   "time": 1.2,
+   "model_time": 0.7,
+   "tools_time": 0.5,
+   "session": "gpt-6-2-astra-skill-none",
+   "input_tokens": 88949,
+   "cached_tokens": 76847,
+   "output_tokens": 2314,
+   "reasoning_tokens": 0
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.903,
+   "test_acc": 0.8183,
+   "test_auroc": 0.8933,
+   "train_acc": 0.8232,
+   "val": [
+    0.8693,
+    0.8887,
+    0.9014
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 0.68,
+   "calls": 21,
+   "time": 6.4,
+   "model_time": 4.3,
+   "tools_time": 2.1,
+   "session": "gpt-6-2-astra-skill-high",
+   "input_tokens": 251660,
+   "cached_tokens": 229305,
+   "output_tokens": 9100,
+   "reasoning_tokens": 1648
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.8902,
+   "test_acc": 0.8035,
+   "test_auroc": 0.8867,
+   "train_acc": 0.8973,
+   "val": [
+    0.8105,
+    0.8832,
+    0.8853
+   ],
+   "recovered": true,
+   "partial": false,
+   "note": "recovered from disk: FINAL_EVAL failed (best/inference.py imports a helper not copied to best/); best iteration 2 run from its own folder",
+   "cost": 1.68,
+   "calls": 58,
+   "time": 6.8,
+   "model_time": 5.0,
+   "tools_time": 1.8,
+   "session": "gpt-6-2-astra-sm-none",
+   "input_tokens": 317809,
+   "cached_tokens": 234513,
+   "output_tokens": 18937,
+   "reasoning_tokens": 0
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.9087,
+   "test_acc": 0.8281,
+   "test_auroc": 0.8999,
+   "train_acc": 0.8443,
+   "val": [
+    0.7676,
+    0.882,
+    0.8956
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 3.74,
+   "calls": 117,
+   "time": 16.8,
+   "model_time": 14.1,
+   "tools_time": 2.6,
+   "session": "gpt-6-2-astra-sm-high",
+   "input_tokens": 905184,
+   "cached_tokens": 736235,
+   "output_tokens": 44526,
+   "reasoning_tokens": 9132
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "key": "sonnet-5-5",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.8694,
+   "test_acc": 0.78,
+   "test_auroc": 0.8638,
+   "train_acc": 0.8435,
+   "val": [
+    0.8141,
+    0.8614,
+    0.8647
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 1.13,
+   "calls": 37,
+   "time": 8.9,
+   "model_time": 2.1,
+   "tools_time": 6.8,
+   "session": "sonnet-5-5-skill-none",
+   "input_tokens": 497563,
+   "cached_tokens": 0,
+   "output_tokens": 12673,
+   "reasoning_tokens": 4117
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "key": "sonnet-5-5",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.8681,
+   "test_acc": 0.7859,
+   "test_auroc": 0.8553,
+   "train_acc": 0.8506,
+   "val": [
+    0.7653,
+    0.8614,
+    0.864
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 0.91,
+   "calls": 24,
+   "time": 5.3,
+   "model_time": 2.3,
+   "tools_time": 3.1,
+   "session": "sonnet-5-5-skill-high",
+   "input_tokens": 373132,
+   "cached_tokens": 0,
+   "output_tokens": 16696,
+   "reasoning_tokens": 4502
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "key": "sonnet-5-5",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.8712,
+   "test_acc": 0.7976,
+   "test_auroc": 0.8767,
+   "train_acc": 0.824,
+   "val": [
+    0.7863,
+    0.8749,
+    0.8615
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": "run with reasoning_effort low, the lowest the provider accepted on 21 November 2026, after it stopped accepting none",
+   "cost": 1.05,
+   "calls": 52,
+   "time": 15.4,
+   "model_time": 2.9,
+   "tools_time": 12.5,
+   "session": "sonnet-5-5-sm-none",
+   "input_tokens": 411922,
+   "cached_tokens": 0,
+   "output_tokens": 22439,
+   "reasoning_tokens": 879
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "key": "sonnet-5-5",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.9031,
+   "test_acc": 0.8232,
+   "test_auroc": 0.8947,
+   "train_acc": 0.8672,
+   "val": [
+    0.8799,
+    0.8934,
+    0.8925
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 3.27,
+   "calls": 82,
+   "time": 17.2,
+   "model_time": 9.8,
+   "tools_time": 7.4,
+   "session": "sonnet-5-5-sm-high",
+   "input_tokens": 1190981,
+   "cached_tokens": 0,
+   "output_tokens": 88533,
+   "reasoning_tokens": 10204
+  },
+  {
+   "model": "DeepSeek V4.1 Flash",
+   "key": "deepseek-v4-1-flash",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.7319,
+   "test_acc": 0.669,
+   "test_auroc": 0.7267,
+   "train_acc": 0.719,
+   "val": [
+    0.6419,
+    0.619,
+    0.7641
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 0.05,
+   "calls": 78,
+   "time": 30.2,
+   "model_time": 5.3,
+   "tools_time": 24.9,
+   "session": "deepseek-v4-1-flash-skill-none",
+   "input_tokens": 2099191,
+   "cached_tokens": 2054784,
+   "output_tokens": 43271,
+   "reasoning_tokens": 17838
+  },
+  {
+   "model": "DeepSeek V4.1 Flash",
+   "key": "deepseek-v4-1-flash",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.8565,
+   "test_acc": 0.7633,
+   "test_auroc": 0.8504,
+   "train_acc": 0.8271,
+   "val": [
+    null,
+    0.8402,
+    0.8423
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 0.08,
+   "calls": 85,
+   "time": 13.7,
+   "model_time": 6.9,
+   "tools_time": 6.8,
+   "session": "deepseek-v4-1-flash-skill-high",
+   "input_tokens": 2497848,
+   "cached_tokens": 2435968,
+   "output_tokens": 83389,
+   "reasoning_tokens": 53162
+  },
+  {
+   "model": "DeepSeek V4.1 Flash",
+   "key": "deepseek-v4-1-flash",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.8805,
+   "test_acc": 0.7937,
+   "test_auroc": 0.8766,
+   "train_acc": 0.8957,
+   "val": [
+    0.8656,
+    0.8739,
+    0.8743
+   ],
+   "recovered": true,
+   "partial": false,
+   "note": "recovered: all 3 iterations ran; the final step failed because best/inference.py imports a module that was not copied to best/; the selected iteration was scored outside the run",
+   "cost": 0.3,
+   "calls": 352,
+   "time": 147.5,
+   "model_time": 17.7,
+   "tools_time": 129.8,
+   "session": "deepseek-v4-1-flash-sm-none",
+   "input_tokens": 6963187,
+   "cached_tokens": 6262144,
+   "output_tokens": 216033,
+   "reasoning_tokens": 66415,
+   "pick": "2"
+  },
+  {
+   "model": "DeepSeek V4.1 Flash",
+   "key": "deepseek-v4-1-flash",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.9066,
+   "test_acc": 0.8281,
+   "test_auroc": 0.9039,
+   "train_acc": 0.8798,
+   "val": [
+    0.8942,
+    null,
+    null
+   ],
+   "recovered": true,
+   "partial": true,
+   "note": "recovered, partial (1 of 3 iterations): third attempt; the container was OOM-killed at its 1 GiB limit during iteration 2 (earlier attempts: a stuck start and a container restart)",
+   "cost": 0.34,
+   "calls": 250,
+   "time": 80.1,
+   "model_time": 19.6,
+   "tools_time": 60.5,
+   "session": "deepseek-v4-1-flash-sm-high"
+  },
+  {
+   "model": "Qwen 3.5 122B-A10B",
+   "key": "qwen3-5-122b",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.7805,
+   "test_acc": 0.72,
+   "test_auroc": 0.7826,
+   "train_acc": 0.8478,
+   "val": [
+    0.6648,
+    0.7836,
+    0.7723
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 0.45,
+   "calls": 74,
+   "time": 4.4,
+   "model_time": 3.5,
+   "tools_time": 0.9,
+   "session": "qwen3-5-122b-skill-none",
+   "input_tokens": 1544732,
+   "cached_tokens": 0,
+   "output_tokens": 21776,
+   "reasoning_tokens": 225
+  },
+  {
+   "model": "Qwen 3.5 122B-A10B",
+   "key": "qwen3-5-122b",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.8132,
+   "test_acc": 0.7613,
+   "test_auroc": 0.8247,
+   "train_acc": 0.8732,
+   "val": [
+    0.4339,
+    0.8011,
+    0.7873
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 0.29,
+   "calls": 41,
+   "time": 7.2,
+   "model_time": 6.1,
+   "tools_time": 1.1,
+   "session": "qwen3-5-122b-skill-high",
+   "input_tokens": 673190,
+   "cached_tokens": 0,
+   "output_tokens": 19866,
+   "reasoning_tokens": 224
+  },
+  {
+   "model": "Qwen 3.5 122B-A10B",
+   "key": "qwen3-5-122b",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.708,
+   "test_acc": 0.6817,
+   "test_auroc": 0.7403,
+   "train_acc": 0.9125,
+   "val": [
+    0.6847,
+    0.6842,
+    0.6719
+   ],
+   "recovered": true,
+   "partial": false,
+   "note": "recovered: the runtime ran out of memory after its 3 iterations, at its final step; best (iteration 0) scored outside the run",
+   "cost": 2.89,
+   "calls": 399,
+   "time": 35.8,
+   "model_time": 33.0,
+   "tools_time": 2.8,
+   "session": "qwen3-5-122b-sm-none"
+  },
+  {
+   "model": "Qwen 3.5 122B-A10B",
+   "key": "qwen3-5-122b",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.8268,
+   "test_acc": 0.7475,
+   "test_auroc": 0.8177,
+   "train_acc": 0.7207,
+   "val": [
+    0.7776,
+    0.7858,
+    0.8206
+   ],
+   "recovered": true,
+   "partial": false,
+   "note": "recovered: the run failed on a provider error (HTTP 400) in the analysis step of its third iteration, after that iteration had been scored, and never reached its final evaluation; the selected iteration was scored outside the run",
+   "cost": 2.25,
+   "calls": 264,
+   "time": 23.6,
+   "model_time": 21.4,
+   "tools_time": 2.2,
+   "session": "qwen3-5-122b-sm-high",
+   "input_tokens": 7060398,
+   "cached_tokens": 0,
+   "output_tokens": 126014,
+   "reasoning_tokens": 4724,
+   "pick": "2"
+  },
+  {
+   "model": "Claude Haiku 4.5",
+   "key": "haiku-4-5",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.68,
+   "test_acc": 0.6277,
+   "test_auroc": 0.695,
+   "train_acc": 0.6815,
+   "val": [
+    0.4548,
+    0.6911,
+    0.6949
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 1.27,
+   "calls": 58,
+   "time": 4.6,
+   "model_time": 3.2,
+   "tools_time": 1.4,
+   "session": "haiku-4-5-skill-none",
+   "input_tokens": 1139426,
+   "cached_tokens": 0,
+   "output_tokens": 25607,
+   "reasoning_tokens": 282
+  },
+  {
+   "model": "Claude Haiku 4.5",
+   "key": "haiku-4-5",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.6739,
+   "test_acc": 0.6601,
+   "test_auroc": 0.7276,
+   "train_acc": 0.94,
+   "val": [
+    0.4277,
+    0.7015,
+    0.6994
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 1.83,
+   "calls": 78,
+   "time": 5.2,
+   "model_time": 4.0,
+   "tools_time": 1.2,
+   "session": "haiku-4-5-skill-high",
+   "input_tokens": 1716179,
+   "cached_tokens": 0,
+   "output_tokens": 21737,
+   "reasoning_tokens": 331
+  },
+  {
+   "model": "Claude Haiku 4.5",
+   "key": "haiku-4-5",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.7752,
+   "test_acc": 0.7141,
+   "test_auroc": 0.7908,
+   "train_acc": 0.8758,
+   "val": [
+    0.4801,
+    0.6924,
+    0.7014
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 3.98,
+   "calls": 258,
+   "time": 19.8,
+   "model_time": 13.1,
+   "tools_time": 6.7,
+   "session": "haiku-4-5-sm-none",
+   "input_tokens": 3462274,
+   "cached_tokens": 0,
+   "output_tokens": 102554,
+   "reasoning_tokens": 6125
+  },
+  {
+   "model": "Claude Haiku 4.5",
+   "key": "haiku-4-5",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.7393,
+   "test_acc": 0.6719,
+   "test_auroc": 0.757,
+   "train_acc": 0.8621,
+   "val": [
+    0.5801,
+    0.7215,
+    0.7174
+   ],
+   "recovered": true,
+   "partial": false,
+   "note": "recovered from disk: the runtime ran out of memory after its 3 iterations, before its final evaluation; best iteration (1) scored on the test inputs outside the run; validation per iteration scored from its own prediction files",
+   "cost": 6.44,
+   "calls": 306,
+   "time": 25.0,
+   "model_time": 17.5,
+   "tools_time": 7.5,
+   "session": "haiku-4-5-sm-high"
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.6662,
+   "test_acc": 0.6582,
+   "test_auroc": 0.7155,
+   "train_acc": 0.8057,
+   "val": [
+    0.4679,
+    0.6257,
+    null
+   ],
+   "recovered": true,
+   "partial": true,
+   "note": "continued from attempt-1 after an interruption, from the end of its iteration_plan step of iteration 0",
+   "cost": 1.5,
+   "calls": 271,
+   "time": 57.1,
+   "model_time": 7.3,
+   "tools_time": 49.8,
+   "session": "gpt-4-1-sm-none",
+   "input_tokens": 1644038,
+   "cached_tokens": 1353600,
+   "output_tokens": 30678,
+   "reasoning_tokens": 0
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.7263,
+   "test_acc": 0.6916,
+   "test_auroc": 0.7607,
+   "train_acc": 0.7317,
+   "val": [
+    0.4676,
+    0.7054,
+    0.721
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 2.1,
+   "calls": 315,
+   "time": 101.7,
+   "model_time": 8.7,
+   "tools_time": 93.0,
+   "session": "gpt-4-1-sm-high",
+   "input_tokens": 2441540,
+   "cached_tokens": 2060416,
+   "output_tokens": 38354,
+   "reasoning_tokens": 0
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.781,
+   "test_acc": 0.7083,
+   "test_auroc": 0.7842,
+   "train_acc": 0.8401,
+   "val": [
+    0.5164,
+    0.7665,
+    0.773
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 5.92,
+   "calls": 43,
+   "time": 5.1,
+   "model_time": 3.6,
+   "tools_time": 1.5,
+   "session": "gpt-4-1-skill-none",
+   "input_tokens": 10579730,
+   "cached_tokens": 10212096,
+   "output_tokens": 9798,
+   "reasoning_tokens": 0
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.7537,
+   "test_acc": 0.6758,
+   "test_auroc": 0.7666,
+   "train_acc": 0.9911,
+   "val": [
+    0.4833,
+    0.48,
+    0.703
+   ],
+   "recovered": false,
+   "partial": false,
+   "note": null,
+   "cost": 0.33,
+   "calls": 37,
+   "time": 1.9,
+   "model_time": 1.0,
+   "tools_time": 0.9,
+   "session": "gpt-4-1-skill-high",
+   "input_tokens": 308618,
+   "cached_tokens": 229760,
+   "output_tokens": 7113,
+   "reasoning_tokens": 0
+  }
+ ],
+ "extra": [
+  {
+   "label": "[attempt] sm/deepseek-v4-1-flash/high",
+   "cost": 0.08,
+   "calls": 91
+  },
+  {
+   "label": "skillv1/gemini-4-hydrogen/none",
+   "cost": 0.48,
+   "calls": 55
+  },
+  {
+   "label": "[attempt] sm/deepseek-v4-1-flash/high",
+   "cost": 0.01,
+   "calls": 25
+  },
+  {
+   "label": "[attempt] sm/fable-5-2/none",
+   "cost": 8.52,
+   "calls": 41
+  },
+  {
+   "label": "[attempt] skill/gpt-4-1/none",
+   "cost": 0.23,
+   "calls": 56
+  },
+  {
+   "label": "[attempt] skill/gpt-4-1/high",
+   "cost": 0.77,
+   "calls": 28
+  },
+  {
+   "label": "[attempt] skill/gpt-4-1/none",
+   "cost": 0.04,
+   "calls": 10
+  },
+  {
+   "label": "[attempt, stopped at setup] skill/gpt-4-1/none",
+   "cost": 0.13,
+   "calls": 24
+  },
+  {
+   "label": "[attempt, stopped at setup] skill/gpt-4-1/high",
+   "cost": 0.11,
+   "calls": 26
+  },
+  {
+   "label": "[replaced by rerun] sm/qwen3-5-122b/high",
+   "cost": 1.1,
+   "calls": 179
+  },
+  {
+   "label": "[replaced by rerun] sm/deepseek-v4-1-flash/none",
+   "cost": 0.39,
+   "calls": 424
+  },
+  {
+   "label": "[replaced by rerun] skill/gpt-6-2-astra/high",
+   "cost": 1.13,
+   "calls": 27
+  },
+  {
+   "label": "[replaced by rerun] sm/gpt-6-2-astra/high",
+   "cost": 5.81,
+   "calls": 154
+  },
+  {
+   "label": "[replaced by rerun] skill/gpt-4-1/none",
+   "cost": 0.47,
+   "calls": 44
+  },
+  {
+   "label": "[replaced by rerun] skill/gpt-4-1/high",
+   "cost": 0.57,
+   "calls": 54
+  },
+  {
+   "label": "[replaced by rerun] sm/gpt-4-1/none",
+   "cost": 3.7,
+   "calls": 179
+  },
+  {
+   "label": "[replaced by rerun] sm/gpt-4-1/high",
+   "cost": 10.62,
+   "calls": 224
+  },
+  {
+   "label": "[attempt] sm/gpt-4-1/none attempt-1",
+   "cost": 0.34,
+   "calls": 63
+  },
+  {
+   "label": "[replaced by rerun] sm/gemini-4-hydrogen/none",
+   "cost": 0.65,
+   "calls": 60
+  },
+  {
+   "label": "[replaced by rerun] sm/opus-5-5/none",
+   "cost": 8.32,
+   "calls": 124
+  },
+  {
+   "label": "[replaced by rerun] sm/sonnet-5-5/none",
+   "cost": 1.31,
+   "calls": 54
+  },
+  {
+   "label": "[pilot] skill/deepseek-v4-1-flash/none",
+   "cost": 0.02,
+   "calls": 46
+  },
+  {
+   "label": "[pilot] skill/deepseek-v4-1-flash/high",
+   "cost": 0.07,
+   "calls": 65
+  },
+  {
+   "label": "[pilot] sm/deepseek-v4-1-flash/none",
+   "cost": 0.09,
+   "calls": 174
+  },
+  {
+   "label": "[pilot] sm/deepseek-v4-1-flash/none",
+   "cost": 0.04,
+   "calls": 107
+  },
+  {
+   "label": "[pilot] sm/deepseek-v4-1-flash/none",
+   "cost": 0.09,
+   "calls": 142
+  },
+  {
+   "label": "[pilot] sm/deepseek-v4-1-flash/none",
+   "cost": 0.16,
+   "calls": 266
+  },
+  {
+   "label": "[pilot] sm/deepseek-v4-1-flash/high",
+   "cost": 0.03,
+   "calls": 33
+  },
+  {
+   "label": "[pilot] sm/deepseek-v4-1-flash/high",
+   "cost": 0.54,
+   "calls": 367
+  },
+  {
+   "label": "[pilot] sm/deepseek-v4-1-flash/high",
+   "cost": 0.25,
+   "calls": 312
+  }
+ ],
+ "total_cost": 240.48,
+ "total_time": 1285.6,
+ "total_time_extra_note": "training time only: model and command minutes up to the end of the last iteration",
+ "generated": "2026-11-21T14:31:43Z",
+ "iters": [
+  {
+   "model": "Claude Opus 5.5",
+   "key": "opus-5-5",
+   "arm": "skill",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8879,
+     "test_acc": 0.8084,
+     "val_auprc": 0.8719,
+     "val_recorded": 0.8719,
+     "cum_time": 2.8,
+     "cum_cost": 0.71,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.9051,
+     "test_acc": 0.8222,
+     "val_auprc": 0.8861,
+     "val_recorded": 0.8861,
+     "cum_time": 3.6,
+     "cum_cost": 0.89,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9029,
+     "test_acc": 0.8212,
+     "val_auprc": 0.8908,
+     "val_recorded": 0.8908,
+     "cum_time": 3.7,
+     "cum_cost": 0.98,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8879,
+     "test_acc": 0.8084,
+     "cum_time": 2.8,
+     "cum_cost": 0.71
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.9051,
+     "test_acc": 0.8222,
+     "cum_time": 3.6,
+     "cum_cost": 0.89
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.9029,
+     "test_acc": 0.8212,
+     "cum_time": 3.7,
+     "cum_cost": 0.98
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.9029,
+    "test_acc": 0.8212,
+    "time": 3.9,
+    "cost": 1.57
+   }
+  },
+  {
+   "model": "Claude Opus 5.5",
+   "key": "opus-5-5",
+   "arm": "skill",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8861,
+     "test_acc": 0.8193,
+     "val_auprc": 0.8757,
+     "val_recorded": 0.8757,
+     "cum_time": 7.6,
+     "cum_cost": 2.89,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8957,
+     "test_acc": 0.8242,
+     "val_auprc": 0.8898,
+     "val_recorded": 0.8898,
+     "cum_time": 18.8,
+     "cum_cost": 4.88,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.91,
+     "test_acc": 0.835,
+     "val_auprc": 0.9017,
+     "val_recorded": 0.9017,
+     "cum_time": 58.0,
+     "cum_cost": 7.72,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8861,
+     "test_acc": 0.8193,
+     "cum_time": 7.6,
+     "cum_cost": 2.89
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8957,
+     "test_acc": 0.8242,
+     "cum_time": 18.8,
+     "cum_cost": 4.88
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.91,
+     "test_acc": 0.835,
+     "cum_time": 58.0,
+     "cum_cost": 7.72
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.91,
+    "test_acc": 0.835,
+    "time": 58.8,
+    "cost": 10.14
+   }
+  },
+  {
+   "model": "Claude Opus 5.5",
+   "key": "opus-5-5",
+   "arm": "sm",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.862,
+     "test_acc": 0.7731,
+     "val_auprc": 0.8597,
+     "val_recorded": 0.8597,
+     "cum_time": 2.6,
+     "cum_cost": 0.83,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.864,
+     "test_acc": 0.779,
+     "val_auprc": 0.8649,
+     "val_recorded": 0.8649,
+     "cum_time": 6.7,
+     "cum_cost": 1.85,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8986,
+     "test_acc": 0.8222,
+     "val_auprc": 0.8902,
+     "val_recorded": 0.8902,
+     "cum_time": 13.4,
+     "cum_cost": 3.44,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.862,
+     "test_acc": 0.7731,
+     "cum_time": 2.6,
+     "cum_cost": 0.83
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.864,
+     "test_acc": 0.779,
+     "cum_time": 6.7,
+     "cum_cost": 1.85
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.8986,
+     "test_acc": 0.8222,
+     "cum_time": 13.4,
+     "cum_cost": 3.44
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8986,
+    "test_acc": 0.8222,
+    "time": 14.0,
+    "cost": 3.44
+   }
+  },
+  {
+   "model": "Claude Opus 5.5",
+   "key": "opus-5-5",
+   "arm": "sm",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8905,
+     "test_acc": 0.8202,
+     "val_auprc": 0.8813,
+     "val_recorded": 0.8813,
+     "cum_time": 13.1,
+     "cum_cost": 3.78,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.9019,
+     "test_acc": 0.8261,
+     "val_auprc": 0.895,
+     "val_recorded": 0.895,
+     "cum_time": 46.5,
+     "cum_cost": 9.23,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9068,
+     "test_acc": 0.833,
+     "val_auprc": 0.8961,
+     "val_recorded": 0.8961,
+     "cum_time": 104.6,
+     "cum_cost": 14.92,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8905,
+     "test_acc": 0.8202,
+     "cum_time": 13.1,
+     "cum_cost": 3.78
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.9019,
+     "test_acc": 0.8261,
+     "cum_time": 46.5,
+     "cum_cost": 9.23
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.9068,
+     "test_acc": 0.833,
+     "cum_time": 104.6,
+     "cum_cost": 14.92
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.9068,
+    "test_acc": 0.833,
+    "time": 104.6,
+    "cost": 16.17
+   }
+  },
+  {
+   "model": "Claude Fable 5.2",
+   "key": "fable-5-2",
+   "arm": "skill",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8536,
+     "test_acc": 0.7692,
+     "val_auprc": 0.8482,
+     "val_recorded": 0.8482,
+     "cum_time": 4.4,
+     "cum_cost": 1.56,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8945,
+     "test_acc": 0.8075,
+     "val_auprc": 0.8948,
+     "val_recorded": 0.8948,
+     "cum_time": 15.6,
+     "cum_cost": 2.19,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9013,
+     "test_acc": 0.8173,
+     "val_auprc": 0.8942,
+     "val_recorded": 0.8942,
+     "cum_time": 31.9,
+     "cum_cost": 5.92,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8536,
+     "test_acc": 0.7692,
+     "cum_time": 4.4,
+     "cum_cost": 1.56
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8945,
+     "test_acc": 0.8075,
+     "cum_time": 15.6,
+     "cum_cost": 2.19
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8945,
+     "test_acc": 0.8075,
+     "cum_time": 31.9,
+     "cum_cost": 5.92
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8945,
+    "test_acc": 0.8075,
+    "time": 32.5,
+    "cost": 7.72
+   }
+  },
+  {
+   "model": "Claude Fable 5.2",
+   "key": "fable-5-2",
+   "arm": "skill",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8731,
+     "test_acc": 0.7976,
+     "val_auprc": 0.8671,
+     "val_recorded": 0.8671,
+     "cum_time": 8.8,
+     "cum_cost": 4.52,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8994,
+     "test_acc": 0.8222,
+     "val_auprc": 0.889,
+     "val_recorded": 0.889,
+     "cum_time": 15.3,
+     "cum_cost": 9.84,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9063,
+     "test_acc": 0.8202,
+     "val_auprc": 0.8993,
+     "val_recorded": 0.8993,
+     "cum_time": 33.6,
+     "cum_cost": 16.07,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8731,
+     "test_acc": 0.7976,
+     "cum_time": 8.8,
+     "cum_cost": 4.52
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8994,
+     "test_acc": 0.8222,
+     "cum_time": 15.3,
+     "cum_cost": 9.84
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.9063,
+     "test_acc": 0.8202,
+     "cum_time": 33.6,
+     "cum_cost": 16.07
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.9063,
+    "test_acc": 0.8202,
+    "time": 34.2,
+    "cost": 18.52
+   }
+  },
+  {
+   "model": "Claude Fable 5.2",
+   "key": "fable-5-2",
+   "arm": "sm",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8939,
+     "test_acc": 0.8163,
+     "val_auprc": 0.8812,
+     "val_recorded": 0.8812,
+     "cum_time": 5.0,
+     "cum_cost": 3.88,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.9039,
+     "test_acc": 0.8183,
+     "val_auprc": 0.8943,
+     "val_recorded": 0.8943,
+     "cum_time": 48.6,
+     "cum_cost": 9.84,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9121,
+     "test_acc": 0.833,
+     "val_auprc": 0.8991,
+     "val_recorded": 0.8991,
+     "cum_time": 109.3,
+     "cum_cost": 14.45,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8939,
+     "test_acc": 0.8163,
+     "cum_time": 5.0,
+     "cum_cost": 3.88
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.9039,
+     "test_acc": 0.8183,
+     "cum_time": 48.6,
+     "cum_cost": 9.84
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.9121,
+     "test_acc": 0.833,
+     "cum_time": 109.3,
+     "cum_cost": 14.45
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.9121,
+    "test_acc": 0.833,
+    "time": 109.3,
+    "cost": 15.22
+   }
+  },
+  {
+   "model": "Claude Fable 5.2",
+   "key": "fable-5-2",
+   "arm": "sm",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8876,
+     "test_acc": 0.8173,
+     "val_auprc": 0.8731,
+     "val_recorded": 0.8731,
+     "cum_time": 26.0,
+     "cum_cost": 9.5,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.9022,
+     "test_acc": 0.8084,
+     "val_auprc": 0.8827,
+     "val_recorded": 0.8827,
+     "cum_time": 117.2,
+     "cum_cost": 47.51,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9003,
+     "test_acc": 0.8251,
+     "val_auprc": 0.8801,
+     "val_recorded": 0.8801,
+     "cum_time": 175.3,
+     "cum_cost": 71.21,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8876,
+     "test_acc": 0.8173,
+     "cum_time": 26.0,
+     "cum_cost": 9.5
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.9022,
+     "test_acc": 0.8084,
+     "cum_time": 117.2,
+     "cum_cost": 47.51
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.9022,
+     "test_acc": 0.8084,
+     "cum_time": 175.3,
+     "cum_cost": 71.21
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.9022,
+    "test_acc": 0.8084,
+    "time": 175.3,
+    "cost": 71.21
+   }
+  },
+  {
+   "model": "Gemini 4 Hydrogen",
+   "key": "gemini-4-hydrogen",
+   "arm": "skill",
+   "effort": "none",
+   "per": [
+    {
+     "it": "1",
+     "test_auprc": null,
+     "test_acc": null,
+     "val_auprc": null,
+     "val_recorded": null,
+     "cum_time": 2.1,
+     "cum_cost": 0.14,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": null,
+     "test_acc": null,
+     "val_auprc": null,
+     "val_recorded": null,
+     "cum_time": 5.1,
+     "cum_cost": 0.22,
+     "wall": false
+    },
+    {
+     "it": "3",
+     "test_auprc": null,
+     "test_acc": null,
+     "val_auprc": null,
+     "val_recorded": null,
+     "cum_time": 11.1,
+     "cum_cost": 0.3,
+     "wall": false
+    },
+    {
+     "it": "4",
+     "test_auprc": null,
+     "test_acc": null,
+     "val_auprc": null,
+     "val_recorded": null,
+     "cum_time": 15.1,
+     "cum_cost": 0.35,
+     "wall": false
+    },
+    {
+     "it": "5",
+     "test_auprc": 0.8863,
+     "test_acc": 0.8084,
+     "val_auprc": 0.8753,
+     "val_recorded": 0.8753,
+     "cum_time": 18.4,
+     "cum_cost": 0.37,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "none": true,
+     "cum_time": 2.1,
+     "cum_cost": 0.14
+    },
+    {
+     "none": true,
+     "cum_time": 5.1,
+     "cum_cost": 0.22
+    },
+    {
+     "none": true,
+     "cum_time": 11.1,
+     "cum_cost": 0.3
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8863,
+    "test_acc": 0.8084,
+    "time": 18.4,
+    "cost": 0.39
+   }
+  },
+  {
+   "model": "Gemini 4 Hydrogen",
+   "key": "gemini-4-hydrogen",
+   "arm": "skill",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8762,
+     "test_acc": 0.7868,
+     "val_auprc": 0.8706,
+     "val_recorded": 0.8706,
+     "cum_time": 4.9,
+     "cum_cost": 0.47,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.9001,
+     "test_acc": 0.8202,
+     "val_auprc": 0.8932,
+     "val_recorded": 0.8932,
+     "cum_time": 13.5,
+     "cum_cost": 0.87,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9065,
+     "test_acc": 0.832,
+     "val_auprc": 0.8993,
+     "val_recorded": 0.8993,
+     "cum_time": 21.7,
+     "cum_cost": 1.32,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8762,
+     "test_acc": 0.7868,
+     "cum_time": 4.9,
+     "cum_cost": 0.47
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.9001,
+     "test_acc": 0.8202,
+     "cum_time": 13.5,
+     "cum_cost": 0.87
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.9065,
+     "test_acc": 0.832,
+     "cum_time": 21.7,
+     "cum_cost": 1.32
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.9065,
+    "test_acc": 0.832,
+    "time": 21.9,
+    "cost": 1.63
+   }
+  },
+  {
+   "model": "Gemini 4 Hydrogen",
+   "key": "gemini-4-hydrogen",
+   "arm": "sm",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.7542,
+     "test_acc": 0.7004,
+     "val_auprc": 0.7084,
+     "val_recorded": 0.7084,
+     "cum_time": 3.2,
+     "cum_cost": 0.25,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.4801,
+     "test_acc": 0.4764,
+     "val_auprc": 0.5059,
+     "val_recorded": 0.5059,
+     "cum_time": 5.9,
+     "cum_cost": 0.46,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8803,
+     "test_acc": 0.7898,
+     "val_auprc": 0.8724,
+     "val_recorded": 0.8724,
+     "cum_time": 9.0,
+     "cum_cost": 0.73,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.7542,
+     "test_acc": 0.7004,
+     "cum_time": 3.2,
+     "cum_cost": 0.25
+    },
+    {
+     "pick": "0",
+     "test_auprc": 0.7542,
+     "test_acc": 0.7004,
+     "cum_time": 5.9,
+     "cum_cost": 0.46
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.8803,
+     "test_acc": 0.7898,
+     "cum_time": 9.0,
+     "cum_cost": 0.73
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8803,
+    "test_acc": 0.7898,
+    "time": 9.5,
+    "cost": 0.73
+   }
+  },
+  {
+   "model": "Gemini 4 Hydrogen",
+   "key": "gemini-4-hydrogen",
+   "arm": "sm",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.885,
+     "test_acc": 0.8026,
+     "val_auprc": 0.8756,
+     "val_recorded": 0.8756,
+     "cum_time": 10.7,
+     "cum_cost": 0.96,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8994,
+     "test_acc": 0.8271,
+     "val_auprc": 0.8908,
+     "val_recorded": 0.8908,
+     "cum_time": 22.1,
+     "cum_cost": 2.24,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9063,
+     "test_acc": 0.833,
+     "val_auprc": 0.891,
+     "val_recorded": 0.891,
+     "cum_time": 62.3,
+     "cum_cost": 4.94,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.885,
+     "test_acc": 0.8026,
+     "cum_time": 10.7,
+     "cum_cost": 0.96
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8994,
+     "test_acc": 0.8271,
+     "cum_time": 22.1,
+     "cum_cost": 2.24
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.9063,
+     "test_acc": 0.833,
+     "cum_time": 62.3,
+     "cum_cost": 4.94
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.9063,
+    "test_acc": 0.833,
+    "time": 62.3,
+    "cost": 4.94
+   }
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "skill",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.6947,
+     "test_acc": 0.6473,
+     "val_auprc": 0.6815,
+     "val_recorded": 0.6815,
+     "cum_time": 0.8,
+     "cum_cost": 0.15,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8441,
+     "test_acc": 0.7515,
+     "val_auprc": 0.8422,
+     "val_recorded": 0.8422,
+     "cum_time": 1.1,
+     "cum_cost": 0.17,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8416,
+     "test_acc": 0.7495,
+     "val_auprc": 0.8411,
+     "val_recorded": 0.8411,
+     "cum_time": 1.2,
+     "cum_cost": 0.19,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.6947,
+     "test_acc": 0.6473,
+     "cum_time": 0.8,
+     "cum_cost": 0.15
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8441,
+     "test_acc": 0.7515,
+     "cum_time": 1.1,
+     "cum_cost": 0.17
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8441,
+     "test_acc": 0.7515,
+     "cum_time": 1.2,
+     "cum_cost": 0.19
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8441,
+    "test_acc": 0.7515,
+    "time": 1.2,
+    "cost": 0.25
+   }
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "skill",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8755,
+     "test_acc": 0.78,
+     "val_auprc": 0.8693,
+     "val_recorded": 0.8693,
+     "cum_time": 1.7,
+     "cum_cost": 0.26,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.9056,
+     "test_acc": 0.8202,
+     "val_auprc": 0.8887,
+     "val_recorded": 0.8887,
+     "cum_time": 5.1,
+     "cum_cost": 0.49,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.903,
+     "test_acc": 0.8183,
+     "val_auprc": 0.9014,
+     "val_recorded": 0.9014,
+     "cum_time": 6.4,
+     "cum_cost": 0.63,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8755,
+     "test_acc": 0.78,
+     "cum_time": 1.7,
+     "cum_cost": 0.26
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.9056,
+     "test_acc": 0.8202,
+     "cum_time": 5.1,
+     "cum_cost": 0.49
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.903,
+     "test_acc": 0.8183,
+     "cum_time": 6.4,
+     "cum_cost": 0.63
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.903,
+    "test_acc": 0.8183,
+    "time": 6.4,
+    "cost": 0.68
+   }
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "sm",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8296,
+     "test_acc": 0.7466,
+     "val_auprc": 0.8105,
+     "val_recorded": 0.8105,
+     "cum_time": 2.4,
+     "cum_cost": 0.71,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8859,
+     "test_acc": 0.7947,
+     "val_auprc": 0.8832,
+     "val_recorded": 0.8832,
+     "cum_time": 4.7,
+     "cum_cost": 1.39,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8902,
+     "test_acc": 0.8035,
+     "val_auprc": 0.8853,
+     "val_recorded": 0.8853,
+     "cum_time": 6.8,
+     "cum_cost": 1.57,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8296,
+     "test_acc": 0.7466,
+     "cum_time": 2.4,
+     "cum_cost": 0.71
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8859,
+     "test_acc": 0.7947,
+     "cum_time": 4.7,
+     "cum_cost": 1.39
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.8902,
+     "test_acc": 0.8035,
+     "cum_time": 6.8,
+     "cum_cost": 1.57
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8902,
+    "test_acc": 0.8035,
+    "time": 6.8,
+    "cost": 1.68
+   }
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "sm",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.7643,
+     "test_acc": 0.6896,
+     "val_auprc": 0.7676,
+     "val_recorded": 0.7676,
+     "cum_time": 5.0,
+     "cum_cost": 1.2,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8947,
+     "test_acc": 0.8212,
+     "val_auprc": 0.882,
+     "val_recorded": 0.882,
+     "cum_time": 9.5,
+     "cum_cost": 2.34,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9087,
+     "test_acc": 0.8281,
+     "val_auprc": 0.8956,
+     "val_recorded": 0.8956,
+     "cum_time": 16.2,
+     "cum_cost": 3.74,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.7643,
+     "test_acc": 0.6896,
+     "cum_time": 5.0,
+     "cum_cost": 1.2
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8947,
+     "test_acc": 0.8212,
+     "cum_time": 9.5,
+     "cum_cost": 2.34
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.9087,
+     "test_acc": 0.8281,
+     "cum_time": 16.2,
+     "cum_cost": 3.74
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.9087,
+    "test_acc": 0.8281,
+    "time": 16.8,
+    "cost": 3.74
+   }
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "key": "sonnet-5-5",
+   "arm": "skill",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.824,
+     "test_acc": 0.7299,
+     "val_auprc": 0.8141,
+     "val_recorded": 0.8141,
+     "cum_time": 8.3,
+     "cum_cost": 0.86,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8672,
+     "test_acc": 0.775,
+     "val_auprc": 0.8614,
+     "val_recorded": 0.8614,
+     "cum_time": 8.7,
+     "cum_cost": 0.92,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8694,
+     "test_acc": 0.78,
+     "val_auprc": 0.8647,
+     "val_recorded": 0.8647,
+     "cum_time": 8.8,
+     "cum_cost": 0.97,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.824,
+     "test_acc": 0.7299,
+     "cum_time": 8.3,
+     "cum_cost": 0.86
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8672,
+     "test_acc": 0.775,
+     "cum_time": 8.7,
+     "cum_cost": 0.92
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.8694,
+     "test_acc": 0.78,
+     "cum_time": 8.8,
+     "cum_cost": 0.97
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8694,
+    "test_acc": 0.78,
+    "time": 8.9,
+    "cost": 1.13
+   }
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "key": "sonnet-5-5",
+   "arm": "skill",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.7667,
+     "test_acc": 0.6768,
+     "val_auprc": 0.7653,
+     "val_recorded": 0.7653,
+     "cum_time": 4.4,
+     "cum_cost": 0.51,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8604,
+     "test_acc": 0.7711,
+     "val_auprc": 0.8614,
+     "val_recorded": 0.8614,
+     "cum_time": 5.1,
+     "cum_cost": 0.63,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8681,
+     "test_acc": 0.7859,
+     "val_auprc": 0.864,
+     "val_recorded": 0.864,
+     "cum_time": 5.2,
+     "cum_cost": 0.69,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.7667,
+     "test_acc": 0.6768,
+     "cum_time": 4.4,
+     "cum_cost": 0.51
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8604,
+     "test_acc": 0.7711,
+     "cum_time": 5.1,
+     "cum_cost": 0.63
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.8681,
+     "test_acc": 0.7859,
+     "cum_time": 5.2,
+     "cum_cost": 0.69
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8681,
+    "test_acc": 0.7859,
+    "time": 5.3,
+    "cost": 0.91
+   }
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "key": "sonnet-5-5",
+   "arm": "sm",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8159,
+     "test_acc": 0.7426,
+     "val_auprc": 0.7863,
+     "val_recorded": 0.7863,
+     "cum_time": 1.4,
+     "cum_cost": 0.3,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8712,
+     "test_acc": 0.7976,
+     "val_auprc": 0.8749,
+     "val_recorded": 0.8749,
+     "cum_time": 12.7,
+     "cum_cost": 0.69,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8573,
+     "test_acc": 0.7731,
+     "val_auprc": 0.8615,
+     "val_recorded": 0.8615,
+     "cum_time": 15.0,
+     "cum_cost": 1.05,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8159,
+     "test_acc": 0.7426,
+     "cum_time": 1.4,
+     "cum_cost": 0.3
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8712,
+     "test_acc": 0.7976,
+     "cum_time": 12.7,
+     "cum_cost": 0.69
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8712,
+     "test_acc": 0.7976,
+     "cum_time": 15.0,
+     "cum_cost": 1.05
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8712,
+    "test_acc": 0.7976,
+    "time": 15.4,
+    "cost": 1.05
+   }
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "key": "sonnet-5-5",
+   "arm": "sm",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8978,
+     "test_acc": 0.8183,
+     "val_auprc": 0.8799,
+     "val_recorded": 0.8799,
+     "cum_time": 3.9,
+     "cum_cost": 0.95,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.9031,
+     "test_acc": 0.8232,
+     "val_auprc": 0.8934,
+     "val_recorded": 0.8934,
+     "cum_time": 9.1,
+     "cum_cost": 2.28,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.9043,
+     "test_acc": 0.8183,
+     "val_auprc": 0.8925,
+     "val_recorded": 0.8925,
+     "cum_time": 17.2,
+     "cum_cost": 3.05,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8978,
+     "test_acc": 0.8183,
+     "cum_time": 3.9,
+     "cum_cost": 0.95
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.9031,
+     "test_acc": 0.8232,
+     "cum_time": 9.1,
+     "cum_cost": 2.28
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.9031,
+     "test_acc": 0.8232,
+     "cum_time": 17.2,
+     "cum_cost": 3.05
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.9031,
+    "test_acc": 0.8232,
+    "time": 17.2,
+    "cost": 3.27
+   }
+  },
+  {
+   "model": "DeepSeek V4.1 Flash",
+   "key": "deepseek-v4-1-flash",
+   "arm": "skill",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.6328,
+     "test_acc": 0.6002,
+     "val_auprc": 0.6419,
+     "val_recorded": 0.6419,
+     "cum_time": 5.2,
+     "cum_cost": 0.02,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.6034,
+     "test_acc": 0.5727,
+     "val_auprc": 0.619,
+     "val_recorded": 0.619,
+     "cum_time": 7.1,
+     "cum_cost": 0.03,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.7319,
+     "test_acc": 0.669,
+     "val_auprc": 0.7641,
+     "val_recorded": 0.7641,
+     "cum_time": 30.1,
+     "cum_cost": 0.04,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.6328,
+     "test_acc": 0.6002,
+     "cum_time": 5.2,
+     "cum_cost": 0.02
+    },
+    {
+     "pick": "0",
+     "test_auprc": 0.6328,
+     "test_acc": 0.6002,
+     "cum_time": 7.1,
+     "cum_cost": 0.03
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.7319,
+     "test_acc": 0.669,
+     "cum_time": 30.1,
+     "cum_cost": 0.04
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.7319,
+    "test_acc": 0.669,
+    "time": 30.2,
+    "cost": 0.05
+   }
+  },
+  {
+   "model": "DeepSeek V4.1 Flash",
+   "key": "deepseek-v4-1-flash",
+   "arm": "skill",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.8484,
+     "test_acc": 0.7564,
+     "val_auprc": 0.8375,
+     "val_recorded": null,
+     "cum_time": 6.5,
+     "cum_cost": 0.05,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8469,
+     "test_acc": 0.7574,
+     "val_auprc": 0.8402,
+     "val_recorded": 0.8402,
+     "cum_time": 9.8,
+     "cum_cost": 0.06,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8565,
+     "test_acc": 0.7633,
+     "val_auprc": 0.8423,
+     "val_recorded": 0.8423,
+     "cum_time": 13.4,
+     "cum_cost": 0.07,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.8484,
+     "test_acc": 0.7564,
+     "cum_time": 6.5,
+     "cum_cost": 0.05
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8469,
+     "test_acc": 0.7574,
+     "cum_time": 9.8,
+     "cum_cost": 0.06
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.8565,
+     "test_acc": 0.7633,
+     "cum_time": 13.4,
+     "cum_cost": 0.07
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8565,
+    "test_acc": 0.7633,
+    "time": 13.7,
+    "cost": 0.08
+   }
+  },
+  {
+   "model": "DeepSeek V4.1 Flash",
+   "key": "deepseek-v4-1-flash",
+   "arm": "sm",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.881,
+     "test_acc": 0.7986,
+     "val_auprc": 0.8656,
+     "val_recorded": 0.8656,
+     "cum_time": 7.2,
+     "cum_cost": 0.08,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8808,
+     "test_acc": 0.7937,
+     "val_auprc": 0.8739,
+     "val_recorded": 0.8739,
+     "cum_time": 70.0,
+     "cum_cost": 0.17,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8805,
+     "test_acc": 0.7937,
+     "val_auprc": 0.8743,
+     "val_recorded": 0.8743,
+     "cum_time": 147.5,
+     "cum_cost": 0.28,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.881,
+     "test_acc": 0.7986,
+     "cum_time": 7.2,
+     "cum_cost": 0.08
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8808,
+     "test_acc": 0.7937,
+     "cum_time": 70.0,
+     "cum_cost": 0.17
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.8805,
+     "test_acc": 0.7937,
+     "cum_time": 147.5,
+     "cum_cost": 0.28
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8805,
+    "test_acc": 0.7937,
+    "time": 147.5,
+    "cost": 0.3
+   }
+  },
+  {
+   "model": "DeepSeek V4.1 Flash",
+   "key": "deepseek-v4-1-flash",
+   "arm": "sm",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.9066,
+     "test_acc": 0.8281,
+     "val_auprc": 0.8942,
+     "val_recorded": 0.8942,
+     "cum_time": 37.8,
+     "cum_cost": 0.21,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": null,
+     "test_acc": null,
+     "val_auprc": null,
+     "val_recorded": null,
+     "cum_time": 80.1,
+     "cum_cost": 0.34,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.9066,
+     "test_acc": 0.8281,
+     "cum_time": 37.8,
+     "cum_cost": 0.21
+    },
+    null,
+    null
+   ],
+   "overall": {
+    "test_auprc": 0.9066,
+    "test_acc": 0.8281,
+    "time": 80.1,
+    "cost": 0.34
+   }
+  },
+  {
+   "model": "Qwen 3.5 122B-A10B",
+   "key": "qwen3-5-122b",
+   "arm": "skill",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.6504,
+     "test_acc": 0.5864,
+     "val_auprc": 0.6648,
+     "val_recorded": 0.6648,
+     "cum_time": 2.4,
+     "cum_cost": 0.15,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.7805,
+     "test_acc": 0.72,
+     "val_auprc": 0.7836,
+     "val_recorded": 0.7836,
+     "cum_time": 3.2,
+     "cum_cost": 0.21,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.764,
+     "test_acc": 0.72,
+     "val_auprc": 0.7723,
+     "val_recorded": 0.7723,
+     "cum_time": 4.0,
+     "cum_cost": 0.26,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.6504,
+     "test_acc": 0.5864,
+     "cum_time": 2.4,
+     "cum_cost": 0.15
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.7805,
+     "test_acc": 0.72,
+     "cum_time": 3.2,
+     "cum_cost": 0.21
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.7805,
+     "test_acc": 0.72,
+     "cum_time": 4.0,
+     "cum_cost": 0.26
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.7805,
+    "test_acc": 0.72,
+    "time": 4.4,
+    "cost": 0.45
+   }
+  },
+  {
+   "model": "Qwen 3.5 122B-A10B",
+   "key": "qwen3-5-122b",
+   "arm": "skill",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.447,
+     "test_acc": 0.4715,
+     "val_auprc": 0.4339,
+     "val_recorded": 0.4339,
+     "cum_time": 4.1,
+     "cum_cost": 0.1,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8132,
+     "test_acc": 0.7613,
+     "val_auprc": 0.8011,
+     "val_recorded": 0.8011,
+     "cum_time": 5.3,
+     "cum_cost": 0.17,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.7859,
+     "test_acc": 0.7358,
+     "val_auprc": 0.7873,
+     "val_recorded": 0.7873,
+     "cum_time": 6.3,
+     "cum_cost": 0.23,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.447,
+     "test_acc": 0.4715,
+     "cum_time": 4.1,
+     "cum_cost": 0.1
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8132,
+     "test_acc": 0.7613,
+     "cum_time": 5.3,
+     "cum_cost": 0.17
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8132,
+     "test_acc": 0.7613,
+     "cum_time": 6.3,
+     "cum_cost": 0.23
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8132,
+    "test_acc": 0.7613,
+    "time": 7.2,
+    "cost": 0.29
+   }
+  },
+  {
+   "model": "Qwen 3.5 122B-A10B",
+   "key": "qwen3-5-122b",
+   "arm": "sm",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.708,
+     "test_acc": 0.6817,
+     "val_auprc": 0.6847,
+     "val_recorded": 0.6847,
+     "cum_time": 7.9,
+     "cum_cost": 0.7,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.6767,
+     "test_acc": 0.6385,
+     "val_auprc": 0.6842,
+     "val_recorded": 0.6842,
+     "cum_time": 24.9,
+     "cum_cost": 2.2,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.6404,
+     "test_acc": 0.6238,
+     "val_auprc": 0.6719,
+     "val_recorded": 0.6719,
+     "cum_time": 35.8,
+     "cum_cost": 2.89,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.708,
+     "test_acc": 0.6817,
+     "cum_time": 7.9,
+     "cum_cost": 0.7
+    },
+    {
+     "pick": "0",
+     "test_auprc": 0.708,
+     "test_acc": 0.6817,
+     "cum_time": 24.9,
+     "cum_cost": 2.2
+    },
+    {
+     "pick": "0",
+     "test_auprc": 0.708,
+     "test_acc": 0.6817,
+     "cum_time": 35.8,
+     "cum_cost": 2.89
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.708,
+    "test_acc": 0.6817,
+    "time": 35.8,
+    "cost": 2.89
+   }
+  },
+  {
+   "model": "Qwen 3.5 122B-A10B",
+   "key": "qwen3-5-122b",
+   "arm": "sm",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.7892,
+     "test_acc": 0.7289,
+     "val_auprc": 0.7776,
+     "val_recorded": 0.7776,
+     "cum_time": 6.8,
+     "cum_cost": 0.62,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.8031,
+     "test_acc": 0.7358,
+     "val_auprc": 0.7858,
+     "val_recorded": 0.7858,
+     "cum_time": 13.7,
+     "cum_cost": 1.28,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.8268,
+     "test_acc": 0.7475,
+     "val_auprc": 0.8206,
+     "val_recorded": 0.8206,
+     "cum_time": 23.6,
+     "cum_cost": 2.2,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.7892,
+     "test_acc": 0.7289,
+     "cum_time": 6.8,
+     "cum_cost": 0.62
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.8031,
+     "test_acc": 0.7358,
+     "cum_time": 13.7,
+     "cum_cost": 1.28
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.8268,
+     "test_acc": 0.7475,
+     "cum_time": 23.6,
+     "cum_cost": 2.2
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.8268,
+    "test_acc": 0.7475,
+    "time": 23.6,
+    "cost": 2.25
+   }
+  },
+  {
+   "model": "Claude Haiku 4.5",
+   "key": "haiku-4-5",
+   "arm": "skill",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.4398,
+     "test_acc": 0.447,
+     "val_auprc": 0.4548,
+     "val_recorded": 0.4548,
+     "cum_time": 2.1,
+     "cum_cost": 0.33,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.6716,
+     "test_acc": 0.6257,
+     "val_auprc": 0.6911,
+     "val_recorded": 0.6911,
+     "cum_time": 3.0,
+     "cum_cost": 0.51,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.68,
+     "test_acc": 0.6277,
+     "val_auprc": 0.6949,
+     "val_recorded": 0.6949,
+     "cum_time": 4.3,
+     "cum_cost": 0.84,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.4398,
+     "test_acc": 0.447,
+     "cum_time": 2.1,
+     "cum_cost": 0.33
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.6716,
+     "test_acc": 0.6257,
+     "cum_time": 3.0,
+     "cum_cost": 0.51
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.68,
+     "test_acc": 0.6277,
+     "cum_time": 4.3,
+     "cum_cost": 0.84
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.68,
+    "test_acc": 0.6277,
+    "time": 4.6,
+    "cost": 1.27
+   }
+  },
+  {
+   "model": "Claude Haiku 4.5",
+   "key": "haiku-4-5",
+   "arm": "skill",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.4376,
+     "test_acc": 0.447,
+     "val_auprc": 0.4277,
+     "val_recorded": 0.4277,
+     "cum_time": 2.8,
+     "cum_cost": 0.74,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.6739,
+     "test_acc": 0.6601,
+     "val_auprc": 0.7015,
+     "val_recorded": 0.7015,
+     "cum_time": 3.6,
+     "cum_cost": 0.96,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.6939,
+     "test_acc": 0.6827,
+     "val_auprc": 0.6994,
+     "val_recorded": 0.6994,
+     "cum_time": 4.5,
+     "cum_cost": 1.18,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.4376,
+     "test_acc": 0.447,
+     "cum_time": 2.8,
+     "cum_cost": 0.74
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.6739,
+     "test_acc": 0.6601,
+     "cum_time": 3.6,
+     "cum_cost": 0.96
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.6739,
+     "test_acc": 0.6601,
+     "cum_time": 4.5,
+     "cum_cost": 1.18
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.6739,
+    "test_acc": 0.6601,
+    "time": 5.2,
+    "cost": 1.83
+   }
+  },
+  {
+   "model": "Claude Haiku 4.5",
+   "key": "haiku-4-5",
+   "arm": "sm",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.4452,
+     "test_acc": 0.4489,
+     "val_auprc": 0.4801,
+     "val_recorded": 0.4801,
+     "cum_time": 5.1,
+     "cum_cost": 1.31,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.7374,
+     "test_acc": 0.6768,
+     "val_auprc": 0.6924,
+     "val_recorded": 0.6924,
+     "cum_time": 10.5,
+     "cum_cost": 2.91,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.7752,
+     "test_acc": 0.7141,
+     "val_auprc": 0.7014,
+     "val_recorded": 0.7014,
+     "cum_time": 19.8,
+     "cum_cost": 3.92,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.4452,
+     "test_acc": 0.4489,
+     "cum_time": 5.1,
+     "cum_cost": 1.31
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.7374,
+     "test_acc": 0.6768,
+     "cum_time": 10.5,
+     "cum_cost": 2.91
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.7752,
+     "test_acc": 0.7141,
+     "cum_time": 19.8,
+     "cum_cost": 3.92
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.7752,
+    "test_acc": 0.7141,
+    "time": 19.8,
+    "cost": 3.98
+   }
+  },
+  {
+   "model": "Claude Haiku 4.5",
+   "key": "haiku-4-5",
+   "arm": "sm",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.5757,
+     "test_acc": 0.5413,
+     "val_auprc": 0.5801,
+     "val_recorded": 0.5801,
+     "cum_time": 6.9,
+     "cum_cost": 2.59,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.7393,
+     "test_acc": 0.6719,
+     "val_auprc": 0.7215,
+     "val_recorded": 0.7215,
+     "cum_time": 14.7,
+     "cum_cost": 4.99,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.7545,
+     "test_acc": 0.6945,
+     "val_auprc": 0.7174,
+     "val_recorded": 0.7174,
+     "cum_time": 25.0,
+     "cum_cost": 6.44,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.5757,
+     "test_acc": 0.5413,
+     "cum_time": 6.9,
+     "cum_cost": 2.59
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.7393,
+     "test_acc": 0.6719,
+     "cum_time": 14.7,
+     "cum_cost": 4.99
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.7393,
+     "test_acc": 0.6719,
+     "cum_time": 25.0,
+     "cum_cost": 6.44
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.7393,
+    "test_acc": 0.6719,
+    "time": 25.0,
+    "cost": 6.44
+   }
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "sm",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.4397,
+     "test_acc": 0.4528,
+     "val_auprc": 0.4679,
+     "val_recorded": 0.4679,
+     "cum_time": 33.3,
+     "cum_cost": 0.92,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.6662,
+     "test_acc": 0.6582,
+     "val_auprc": 0.6257,
+     "val_recorded": 0.6257,
+     "cum_time": 43.4,
+     "cum_cost": 1.2,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": null,
+     "test_acc": null,
+     "val_auprc": null,
+     "val_recorded": null,
+     "cum_time": 52.9,
+     "cum_cost": 1.5,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.4397,
+     "test_acc": 0.4528,
+     "cum_time": 33.3,
+     "cum_cost": 0.92
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.6662,
+     "test_acc": 0.6582,
+     "cum_time": 43.4,
+     "cum_cost": 1.2
+    },
+    null
+   ],
+   "overall": {
+    "test_auprc": 0.6662,
+    "test_acc": 0.6582,
+    "time": 57.1,
+    "cost": 1.5
+   }
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "sm",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.4732,
+     "test_acc": 0.4912,
+     "val_auprc": 0.4676,
+     "val_recorded": 0.4676,
+     "cum_time": 20.3,
+     "cum_cost": 1.13,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.7522,
+     "test_acc": 0.6974,
+     "val_auprc": 0.7054,
+     "val_recorded": 0.7054,
+     "cum_time": 37.5,
+     "cum_cost": 1.77,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.7263,
+     "test_acc": 0.6916,
+     "val_auprc": 0.721,
+     "val_recorded": 0.721,
+     "cum_time": 94.6,
+     "cum_cost": 2.1,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.4732,
+     "test_acc": 0.4912,
+     "cum_time": 20.3,
+     "cum_cost": 1.13
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.7522,
+     "test_acc": 0.6974,
+     "cum_time": 37.5,
+     "cum_cost": 1.77
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.7263,
+     "test_acc": 0.6916,
+     "cum_time": 94.6,
+     "cum_cost": 2.1
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.7263,
+    "test_acc": 0.6916,
+    "time": 101.7,
+    "cost": 2.1
+   }
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "skill",
+   "effort": "none",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.5346,
+     "test_acc": 0.501,
+     "val_auprc": 0.5164,
+     "val_recorded": 0.5164,
+     "cum_time": 2.5,
+     "cum_cost": 2.43,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.7799,
+     "test_acc": 0.6955,
+     "val_auprc": 0.7665,
+     "val_recorded": 0.7665,
+     "cum_time": 3.6,
+     "cum_cost": 3.82,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.781,
+     "test_acc": 0.7083,
+     "val_auprc": 0.773,
+     "val_recorded": 0.773,
+     "cum_time": 5.1,
+     "cum_cost": 5.57,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.5346,
+     "test_acc": 0.501,
+     "cum_time": 2.5,
+     "cum_cost": 2.43
+    },
+    {
+     "pick": "1",
+     "test_auprc": 0.7799,
+     "test_acc": 0.6955,
+     "cum_time": 3.6,
+     "cum_cost": 3.82
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.781,
+     "test_acc": 0.7083,
+     "cum_time": 5.1,
+     "cum_cost": 5.57
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.781,
+    "test_acc": 0.7083,
+    "time": 5.1,
+    "cost": 5.92
+   }
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "skill",
+   "effort": "high",
+   "per": [
+    {
+     "it": "0",
+     "test_auprc": 0.4336,
+     "test_acc": 0.443,
+     "val_auprc": 0.4833,
+     "val_recorded": 0.4833,
+     "cum_time": 1.0,
+     "cum_cost": 0.11,
+     "wall": false
+    },
+    {
+     "it": "1",
+     "test_auprc": 0.464,
+     "test_acc": 0.4558,
+     "val_auprc": 0.48,
+     "val_recorded": 0.48,
+     "cum_time": 1.4,
+     "cum_cost": 0.19,
+     "wall": false
+    },
+    {
+     "it": "2",
+     "test_auprc": 0.7537,
+     "test_acc": 0.6758,
+     "val_auprc": 0.703,
+     "val_recorded": 0.703,
+     "cum_time": 1.9,
+     "cum_cost": 0.31,
+     "wall": false
+    }
+   ],
+   "after": [
+    {
+     "pick": "0",
+     "test_auprc": 0.4336,
+     "test_acc": 0.443,
+     "cum_time": 1.0,
+     "cum_cost": 0.11
+    },
+    {
+     "pick": "0",
+     "test_auprc": 0.4336,
+     "test_acc": 0.443,
+     "cum_time": 1.4,
+     "cum_cost": 0.19
+    },
+    {
+     "pick": "2",
+     "test_auprc": 0.7537,
+     "test_acc": 0.6758,
+     "cum_time": 1.9,
+     "cum_cost": 0.31
+    }
+   ],
+   "overall": {
+    "test_auprc": 0.7537,
+    "test_acc": 0.6758,
+    "time": 1.9,
+    "cost": 0.33
+   }
+  }
+ ],
+ "replaced": [
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "skill",
+   "effort": "none",
+   "test_auprc": 0.7542,
+   "cost": 0.47,
+   "time": 2.0,
+   "partial": false,
+   "session": "gpt-4-1-skill-none-orig",
+   "iterations": 3
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.7523,
+   "cost": 0.57,
+   "time": 2.2,
+   "partial": false,
+   "session": "gpt-4-1-skill-high-orig",
+   "iterations": 3
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.7279,
+   "cost": 3.7,
+   "time": 13.9,
+   "partial": true,
+   "session": "gpt-4-1-sm-none-orig",
+   "iterations": 2
+  },
+  {
+   "model": "GPT-4.1",
+   "key": "gpt-4-1",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.7058,
+   "cost": 10.62,
+   "time": 113.1,
+   "partial": true,
+   "session": "gpt-4-1-sm-high-orig",
+   "iterations": 2
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "skill",
+   "effort": "high",
+   "test_auprc": 0.8977,
+   "cost": 1.13,
+   "time": 4.1,
+   "partial": false,
+   "session": "gpt-6-2-astra-skill-high-orig",
+   "iterations": 3
+  },
+  {
+   "model": "GPT-6.2 Astra",
+   "key": "gpt-6-2-astra",
+   "arm": "sm",
+   "effort": "high",
+   "test_auprc": 0.9065,
+   "cost": 5.81,
+   "time": 20.6,
+   "partial": false,
+   "session": "gpt-6-2-astra-sm-high-orig",
+   "iterations": 3
+  },
+  {
+   "model": "Claude Opus 5.5",
+   "key": "opus-5-5",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.9131,
+   "cost": 8.32,
+   "time": 149.3,
+   "partial": false,
+   "session": "opus-5-5-sm-none-orig",
+   "iterations": 3
+  },
+  {
+   "model": "Gemini 4 Hydrogen",
+   "key": "gemini-4-hydrogen",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.8858,
+   "cost": 0.65,
+   "time": 10.0,
+   "partial": false,
+   "session": "gemini-4-hydrogen-sm-none-orig",
+   "iterations": 3
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "key": "sonnet-5-5",
+   "arm": "sm",
+   "effort": "none",
+   "test_auprc": 0.8866,
+   "cost": 1.31,
+   "time": 6.0,
+   "partial": false,
+   "session": "sonnet-5-5-sm-none-orig",
+   "iterations": 3
+  }
+ ]
+}

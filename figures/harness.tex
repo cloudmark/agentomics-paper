@@ -1,0 +1,59 @@
+% Agentomics-ML state diagram. Shaded (darker border + fill): model turns; outlined (lighter): harness code.
+\begin{tikzpicture}[x=2.75cm, y=1.65cm,
+    >={Latex[length=2.4mm, width=1.5mm]}, font=\footnotesize,
+    every node/.style={align=center},
+    % model turns: clearly shaded
+    model/.style={draw=black, line width=0.75pt, rounded corners=3pt,
+                  fill=black!13, minimum width=2.05cm, minimum height=0.78cm},
+    % harness code: outlined only
+    code/.style={draw=black!45, line width=0.5pt, rounded corners=3pt,
+                 fill=white, minimum width=2.05cm, minimum height=0.78cm},
+    edge/.style={->, draw=black!70, line width=0.6pt},
+    fail/.style={->, draw=black!50, line width=0.55pt, densely dashed},
+    lbl/.style={font=\scriptsize, inner sep=2pt, fill=white}]
+
+  % ── top row (left → right) ──
+  \node[code]  (setup)   at (0,0)  {Setup};
+  \node[model] (plan)    at (1,0)  {Plan};
+  \node[model] (explore) at (2,0)  {Explore};
+  \node[model] (train)   at (3,0)  {Train};
+  \node[code]  (ctrain)  at (4,0)  {Check\\train};
+
+  % ── bottom row (right → left) ──
+  \node[model] (infer)   at (4,-1) {Infer};
+  \node[code]  (cinfer)  at (3,-1) {Check\\inference};
+  \node[code]  (valid)   at (2,-1) {Validate};
+  \node[model] (analyse) at (1,-1) {Analyse};
+  \node[code]  (final)   at (0,-1) {Final\\evaluation};
+  \node[code]  (report)  at (0,-2) {Report};
+
+  % ── main flow ──
+  \draw[edge] (setup)   -- (plan);
+  \draw[edge] (plan)    -- (explore);
+  \draw[edge] (explore) -- (train);
+  \draw[edge] (train)   -- (ctrain);
+  \draw[edge] (ctrain)  -- node[lbl, right=1pt] {\itshape pass} (infer);
+  \draw[edge] (infer)   -- (cinfer);
+  \draw[edge] (cinfer)  -- node[lbl, above=6pt] {\itshape pass} (valid);
+  \draw[edge] (valid)   -- (analyse);
+  \draw[edge] (analyse) -- node[lbl, right=2pt] {$i < 3$} (plan);
+  \draw[edge] (analyse) -- node[lbl, above=6pt, pos=0.55] {$i = 3$} (final);
+  % the test set is handed over by the person, after the last iteration
+  \node[font=\scriptsize\itshape] (hil) at (0.95,-1.5) {person gives test set};
+  \draw[->, draw=black!50, line width=0.55pt, densely dotted] (hil.west) -| ($(final.south)+(0.28,0)$);
+  \draw[edge] (final)   -- (report);
+
+  % ── fail loops ──
+  \draw[fail] (ctrain.north) -- ++(0,0.4) -|
+      node[lbl, above, pos=0.22] {fail\;(${\le}3$ retries)} (train.north);
+  \draw[fail] (cinfer.south) -- ++(0,-0.4) -|
+      node[lbl, below, pos=0.22] {fail\;(${\le}3$ retries)} (infer.south);
+
+  % ── legend ──
+  \node[model, minimum width=0.38cm, minimum height=0.26cm, inner sep=0] (lm) at (1.0,-2) {};
+  \node[font=\scriptsize, anchor=west] at (lm.east) {\enspace model turn (${\le}40$ rounds)};
+  \node[code,  minimum width=0.38cm, minimum height=0.26cm, inner sep=0] (lc) at (2.65,-2) {};
+  \node[font=\scriptsize, anchor=west] at (lc.east) {\enspace harness code};
+  \draw[fail] (3.45,-2) -- ++(0.28,0);
+  \node[font=\scriptsize, anchor=west] at (3.73,-2) {\enspace failed check};
+\end{tikzpicture}

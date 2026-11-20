@@ -1,0 +1,23 @@
+\section{Related work}\label{sec:related}
+
+\paragraph{Agents for ML experimentation.} Several systems let a language model carry out machine-learning work end to
+end. MLAgentBench \citep{huang2024mlagentbench} and MLE-bench \citep{chan2024mlebench} evaluate such agents on
+experimentation and Kaggle-style engineering tasks. DS-Agent \citep{guo2024dsagent} retrieves past solutions to guide a
+data-science pipeline, AIDE \citep{jiang2025aide} searches a tree of candidate solutions, and the AI Scientist
+\citep{lu2024aiscientist} automates the wider research loop. These systems differ mainly in how much of the procedure
+they fix in code and how much they leave to the model, which is the axis this study varies.
+
+\paragraph{Agentomics-ML.} The state-machine condition in this study follows Agentomics-ML \citep{martinek2025agentomics}: predefined experimentation steps, shell access to a workspace, a small training subset on which
+the agent's scripts are checked, validation-based selection of the best iteration, and a single final test on held-out
+data (\cref{sec:conditions}). With GPT-4.1 it reached a test average precision of 0.778 on AGO2 CLASH, the best result
+among the agent-based methods evaluated there.
+
+\paragraph{Skills.} A skill replaces the fixed steps with written guidance that a general-purpose agent loads when a
+task calls for it. The skill used in this study, \texttt{ml-research}, is derived from the Agentomics-ML procedure
+\citep{martinek2025agentomics} and is available at \citet{alexiou2025distill}; a description is in \cref{app:repro}.
+
+\paragraph{Data and metric.} The task is the AGO2\_CLASH\_Hejret2023 dataset of miRBench \citep{sammut2025mirbench},
+derived from AGO2 CLASH experiments \citep{hejret2023}. The best non-agent model on its test split is a CNN retrained
+on it, with an average precision of 0.86 \citep{sammut2025mirbench}; we refer to it as the human state of the art. We
+report average precision as computed by scikit-learn, a step-wise estimate of the area under the precision--recall
+curve (AU-PRC) that focuses on the positive class \citep{davis2006prroc}.

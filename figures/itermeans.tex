@@ -1,0 +1,14 @@
+% Mean test AU-PRC after 1, 2 and 3 iterations, by tier, method and reasoning effort (series from generated.tex).
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1, horizontal sep=1.6cm},
+  width=6.6cm, height=5.6cm, xmin=0.7, xmax=3.3, xtick={1,2,3}, ymin=0.55, ymax=0.94,
+  ytick={0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90},
+  ytick scale label code/.code={}, scaled y ticks=false,
+  yticklabel style={/pgf/number format/fixed, /pgf/number format/fixed zerofill, /pgf/number format/precision=2},
+  title style={font=\small\bfseries}, axis line style={black!40}, label style={font=\footnotesize},
+  ymajorgrids, grid style={black!8},
+  every axis plot/.append style={mark size=2.6pt, line width=1.1pt}]
+\IterMeanPlots
+\end{groupplot}
+\node[anchor=south] at ($(group c1r1.north)!0.5!(group c2r1.north)+(0,0.7cm)$) {\pgfplotslegendfromname{itermeanlegend}};
+\end{tikzpicture}

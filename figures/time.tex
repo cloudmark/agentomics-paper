@@ -1,0 +1,27 @@
+% Cost and training time per run on log axes, and each run's split of time across its iterations (series from generated.tex).
+\begin{tikzpicture}
+\pgfplotsset{runrows/.style={height=18.9cm, ymin=-0.7, ymax=35.7, axis line style={black!40},
+  label style={font=\footnotesize}, tick label style={font=\scriptsize},
+  extra y ticks={3.5,7.5,11.5,15.5,19.5,23.5,27.5,31.5}, extra y tick labels={,,,,,,,},
+  extra y tick style={grid=major, grid style={draw=black!30, line width=0.5pt, dashed}, tick style={draw=none}}}}
+\begin{axis}[name=cost, runrows, xmode=log, log basis x=10, width=0.33\linewidth, xmin=0.02, xmax=1500,
+  xtick={0.1,1,10,100}, xticklabels={0.1,1,10,100}, timerows, yticklabel style={font=\scriptsize},
+  xlabel={cost, USD (log)}, xmajorgrids, grid style={black!8}, every axis plot/.append style={mark size=2.2pt},
+  legend to name=runlegend, legend columns=4, legend style={font=\scriptsize, draw=black!20, /tikz/every even column/.append style={column sep=0.5em}}]
+\CostTotalPlots
+\legend{{skill (\texttt{none})},{skill (\texttt{high})},{SM (\texttt{none})},{SM (\texttt{high})}}
+\end{axis}
+\begin{axis}[name=totals, at={(cost.east)}, anchor=west, xshift=0.35cm, runrows, xmode=log, log basis x=10, width=0.33\linewidth,
+  xmin=0.5, xmax=900, xtick={1,10,100}, xticklabels={1,10,100}, ytick={0,...,35}, yticklabels={}, ytick style={draw=none},
+  xlabel={time, min (log)}, xmajorgrids, grid style={black!8}, every axis plot/.append style={mark size=2.2pt}]
+\TimeTotalPlots
+\end{axis}
+\begin{axis}[name=share, at={(totals.east)}, anchor=west, xshift=0.35cm, runrows, xbar stacked, bar width=7.5pt, width=0.29\linewidth,
+  xmin=0, xmax=100, xtick={0,50,100}, ytick={0,...,35}, yticklabels={}, ytick style={draw=none},
+  xlabel={time by iteration (\%)},
+  legend style={font=\scriptsize, at={(0.5,1.008)}, anchor=south, legend columns=3, draw=black!20, /tikz/every even column/.append style={column sep=0.25em}}]
+\TimeSharePlots
+\legend{iteration 1, 2, 3}
+\end{axis}
+\node[anchor=south] at ($(cost.north)!0.5!(totals.north)+(-0.55cm,0.1cm)$) {\pgfplotslegendfromname{runlegend}};
+\end{tikzpicture}

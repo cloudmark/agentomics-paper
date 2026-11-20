@@ -1,0 +1,14 @@
+% Every run's test AU-PRC, one row per model (series from generated.tex).
+\begin{tikzpicture}
+\begin{axis}[width=0.82\linewidth, height=11.5cm, xmin=0.60, xmax=0.94, ymin=0.5, ymax=9.5,
+  dotrows, yticklabel style={font=\small}, xlabel={test AU-PRC},
+  xmajorgrids, grid style={black!8}, axis line style={black!40},
+  xlabel style={yshift=-2pt},
+  legend style={font=\footnotesize, at={(0.5,1.04)}, anchor=south, draw=black!20, fill=white, legend columns=4},
+  legend cell align=left,
+  every legend image/.append style={mark size=2.5pt},
+  every axis plot/.append style={only marks, mark size=2.8pt}]
+\DotPlots
+\legend{{skill (\texttt{none})},{skill (\texttt{high})},{SM (\texttt{none})},{SM (\texttt{high})}}
+\end{axis}
+\end{tikzpicture}

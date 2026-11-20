@@ -1,0 +1,51 @@
+\section{Full results}\label{app:tables}
+
+{\footnotesize\setlength{\tabcolsep}{2.4pt}
+\IterTable{Test AU-PRC of the model each run would have submitted after 1, 2 and 3 iterations, and of the model it
+finally submitted. A dash: that iteration produced no model. N/A: no iteration so far had produced a model that
+ran on new inputs. \emph{Picked}: the iteration the run submitted, chosen on validation. \emph{Best on test}: the
+iteration whose own model scored highest on test, with that score; bold where it differs from the one
+picked. $^{\dagger}$: a repeated run; $^{\ddagger}$: test predictions produced by hand (\cref{sec:limitations}).\label{tab:iterations}}}
+
+\newpage
+{\scriptsize\setlength{\tabcolsep}{1.5pt}
+\RunsTable{Every run: method (SM: state machine), iterations with a scored model (It.), test and training scores,
+time in minutes split into model and code time, model calls, reasoning tokens (a dash where none were recorded) and
+cost. $^{\dagger}$: a repeated run (\cref{sec:repeats}). $^{\ddagger}$: test predictions produced by hand from the
+run's selected model (\cref{sec:limitations}).\label{tab:runs}}}
+
+\begin{table}[H]\centering\footnotesize
+\caption{Attempts, replaced runs and pilots that are not among the 36 reported runs, with their model calls and cost.}
+\label{tab:extra}
+\ExtraTable
+\end{table}
+
+\section{Reproducibility}\label{app:repro}
+
+\paragraph{Models.} The original runs took place on 18--20 November 2026 and the nine repeats (\cref{sec:repeats}) on
+20--21 November, all through OpenRouter, with these model identifiers:
+\begin{center}\scriptsize\setlength{\tabcolsep}{4pt}\begin{tabular}{@{}lll@{}}
+\texttt{anthropic/claude-fable-5.2} & \texttt{anthropic/claude-opus-5.5} & \texttt{anthropic/claude-sonnet-5.5}\\
+\texttt{anthropic/claude-haiku-4.5} & \texttt{google/gemini-4-hydrogen} & \texttt{openai/gpt-6.2-astra}\\
+\texttt{openai/gpt-4.1} & \texttt{deepseek/deepseek-v4.1-flash} & \texttt{qwen/qwen3.5-122b-a10b}\\
+\end{tabular}\end{center}
+
+\paragraph{Task prompts.} The state machine received: \emph{``Train a model that tells whether a microRNA binds a target
+site (label 1) or not (label 0).''}, with three iterations and AU-PRC as its configured metric. The agent received:
+\emph{``The dataset is in uploads/ago2-clash. Use the ml-research skill to train a model that tells whether a microRNA
+binds a target site (label 1) or not (label 0). Run 3 iterations, judged on AUPRC.''} In the nine repeats
+(\cref{sec:repeats}) the agent received the same message with a different system prompt, and Agentomics-ML 1.2.0 was
+started with the dataset, AU-PRC as its metric and three iterations, and used its default task prompt.
+
+\paragraph{Agent system prompt.} \emph{``You are an assistant working in the thread's workspace: list it with ls and glob,
+search it with grep, read files with read\_file, make a file with write\_file, change part of one with edit\_file, and
+run commands with execute. Paths are relative to the workspace. When a skill covers the task, load it and follow it. Do
+the whole task before you answer, then say in a few sentences what you did.''}
+
+\paragraph{Scoring.} Test scores, the per-iteration re-scoring and the bootstrap intervals were computed from the
+prediction files the runs wrote, with scikit-learn's \texttt{average\_precision\_score} (Python 3.13); the code and
+data are available at \url{https://github.com/cloudmark/agentomics-paper}.
+
+\paragraph{The skill.} The \texttt{ml-research} skill and its scripts are available at
+\url{https://github.com/palexiou/agentomics-distill} \citep{alexiou2025distill}; \cref{sec:conditions} describes its
+procedure.

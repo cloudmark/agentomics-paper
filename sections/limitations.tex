@@ -1,0 +1,64 @@
+\section{Limitations}\label{sec:limitations}
+
+\paragraph{One run per configuration.} Each model, method and reasoning setting was run once. The bootstrap intervals
+in \cref{tab:pairs} capture the uncertainty of scoring on 1,018 test pairs, not the variation between repeated runs of
+the same configuration, which is likely larger: across Agentomics-ML's five GPT-4.1 runs on this dataset the reported
+spread is 0.033 \citep[Table 5, given there as the variance between runs]{martinek2025agentomics}. Our own repeats point the same way: for the nine configurations run twice, the two runs differed by a
+median of \RepeatMedianDiff{} and by up to \RepeatMaxDiff{} (\cref{tab:repeats}). Differences of a few hundredths between single runs should therefore
+be read as directions, and the conclusions rest on patterns that hold across several models rather than on any one pair.
+
+
+\paragraph{Adherence to the skill.} Nothing enforces the skill's procedure, so we checked every skill run's commands
+against it. All eighteen runs ran the skill's setup script, and every recorded score was written by the skill's
+scripts; no run wrote the record itself. Sixteen runs ran the check script on each of their three planned iterations
+and passed it. The other two are DeepSeek with reasoning \texttt{high}, whose first iteration never passed the check
+(its second and third did), and Gemini with reasoning \texttt{none}, which needed five iterations before one passed.
+Seventeen runs stopped at the three planned iterations. After the test inputs arrived, no run trained again or changed
+its selected model; two copied into the selected model's folder a helper module that its inference script imports.
+For the three repeated skill runs no command log was kept, and we checked their workspaces instead.
+
+\paragraph{Test labels in the workspace.} In the state-machine condition the test upload contained its labels file
+alongside the inputs, because the harness's final evaluation step scores the model itself. It was uploaded only after a
+run's last iteration, when its model had been selected, and the state machine has no model step after that point. No
+tool call in any run refers to the labels file. Skill runs received the test inputs only, and none trained again or
+changed its selected model once they arrived. In the repeated state-machine runs the test split was not in the model's container during the
+iterations. All reported test scores were computed independently.
+
+\paragraph{Interrupted runs.} State-machine runs are long, up to three hours, and they run the agent's training code in
+the same container as the agent runtime, under a fixed memory limit. When a training job exceeded that limit the
+container was stopped, and because a state-machine run carries out all three iterations in one uninterrupted turn, it
+could not continue from where it had stopped. This happened several times, always in state-machine runs with long
+training jobs, and is a property of our execution environment, not of either method. Interrupted runs were repeated.
+Where a repeat was interrupted as well, the run is reported with the iterations it completed: DeepSeek under the state
+machine with reasoning \texttt{high} has one, and Claude Fable 5.2 under the state machine with reasoning
+\texttt{high} has two, to which the first iteration of a second run of that configuration was added; that record's
+cost, calls and time are those of both runs. No skill run lost an iteration this way; their training jobs
+were shorter. Since every reported score is computed from the prediction files a run wrote (\cref{sec:evaluation}), an
+interruption after a model was trained does not change how that model is scored.
+
+\paragraph{Runs completed by hand.} In \HandCount{} of the 27 original runs (\HandSm{} state machine, one skill) the run
+ended before it had predicted on the test set, and we ran the selected iteration's own inference script on the test
+inputs ourselves; they are marked in \cref{tab:matrix,tab:pairs,tab:single,tab:runs}. In three the final step failed
+because the selected model's script imported a module that had not been copied with it, in three the run stopped while
+waiting for the test set, one failed on a provider error after its third iteration had been scored, two were stopped
+during an iteration, and one skill run never reached its test step. The model, its selection on validation and the
+inference script are the run's own. In \HandSmAhead{} of the \PairsSm{} pairs in which the state machine is clearly
+ahead, the state-machine run is one of these.
+
+\paragraph{Repeated runs.} The decision to repeat nine runs, and to report the repeats, was made after the original
+test scores were known, and the repeats come from a second implementation with different round limits, steps, split
+and prompts (\cref{sec:repeats}). Replacing the originals changed the class of \ChangedPairs{} of the 18 pairs. For
+Opus, Gemini and Sonnet with reasoning \texttt{none} the state-machine run is a repeat and the skill run an original,
+so those three pairs also compare two implementations, and for Sonnet two reasoning efforts. The reasons for two of
+the repeats point to a further weakness: validation data is a random fifth of the training set and shares target sites
+with it, so a model that learns a site's label rate scores far higher on validation than on test, as the original
+state-machine runs of Opus and Sonnet did (0.96 on validation against 0.91 and 0.89 on test).
+
+\paragraph{Attempts and pilots.} \ExtraCount{} attempts and runs are not among the 36: attempts that stopped before
+finishing, runs replaced by a later run, and nine pilot attempts of the second implementation on DeepSeek
+(\cref{tab:extra}). They cost \ExtraCost{}, which the costs reported here exclude. Three of the pilots finished,
+scoring 0.836 and 0.852 under the skill and 0.832 under the state machine, against the reported runs' 0.732, 0.856 and
+0.907.
+
+\paragraph{Model coverage.} Nine models through one provider is a narrow sample. The number of models, and the single
+run per configuration, were limited mainly by cost: the 36 runs reported here came to \RunsCost{} in model fees.

@@ -1,0 +1,15 @@
+% Test AU-PRC of the model each run would have submitted after 1, 2 and 3 iterations (series from generated.tex).
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=3 by 3, horizontal sep=1.2cm, vertical sep=1.45cm},
+  width=5.0cm, height=4.3cm, xmin=0.7, xmax=3.3, xtick={1,2,3},
+  enlarge y limits={abs=0.022},
+  ytick scale label code/.code={}, scaled y ticks=false,
+  yticklabel style={/pgf/number format/fixed, /pgf/number format/fixed zerofill, /pgf/number format/precision=2},
+  title style={font=\footnotesize\bfseries, yshift=-3pt, text height=1.6ex, text depth=0.4ex}, axis line style={black!40},
+  label style={font=\footnotesize}, xlabel style={yshift=2pt}, ylabel style={yshift=-3pt},
+  ymajorgrids, grid style={black!8},
+  every axis plot/.append style={mark size=2.1pt, line width=0.9pt}]
+\IterPlots
+\end{groupplot}
+\node[anchor=south] at ($(group c2r1.north)+(0,0.75cm)$) {\pgfplotslegendfromname{iterlegend}};
+\end{tikzpicture}

@@ -1,0 +1,17 @@
+\begin{list}{}{\setlength{\leftmargin}{0.5in}\setlength{\rightmargin}{0.5in}}\item[]
+Agentomics-ML runs machine-learning experiments as a state machine: the steps are fixed, each step's output is checked,
+and the language model works only inside a step. A \emph{skill} describes the same procedure in a document that a
+general-purpose agent reads and follows on its own. We ask whether the enforced structure still pays off, comparing the
+two on the AGO2 CLASH miRNA--target classification task with nine language models, each run under both methods with
+reasoning effort \texttt{none} and \texttt{high}: 36 runs, each planned for three iterations and scored on a held-out test set.
+
+For top-of-line models with reasoning enabled the method makes no measurable difference: both score 0.902--0.910. Mid-range models
+mostly do better with the state machine, which is clearly ahead in \PairsSm{} of the 18 model-and-setting pairs against
+\PairsSkill{} for the skill, although the overall difference is not significant ($p=\WilcoxonP$). The state machine's
+advantage is largest after a single iteration and shrinks as the agent iterates; two iterations give most of the final
+score for about half the training time. The skill is cheaper and faster: \SkillCost{} and \SkillTime{} in total, against
+\SmCost{} and \SmTime{}. Nothing forces an agent to run the skill's own test of each iteration, yet in sixteen of the
+eighteen skill runs the agent ran it on every iteration and passed. Nine of the 36 runs were repeated with a second implementation; with
+the original runs in their place the state machine is clearly ahead in \OrigPairsSm{} pairs and the skill in
+\OrigPairsSkill{} ($p=\OrigWilcoxonP$).
+\end{list}

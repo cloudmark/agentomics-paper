@@ -1,0 +1,56 @@
+\section{Discussion}\label{sec:discussion}
+
+For top-of-line models with reasoning enabled, written guidance was enough: with reasoning \texttt{high}, the skill and
+Agentomics-ML are indistinguishable on the test set for all four, and the skill costs a fraction as much. With
+reasoning \texttt{none}, Agentomics-ML's fixed steps still help two of the four (Fable and Astra),
+suggesting that its structure partly substitutes for the model planning its own work.
+
+For three of the five mid-range models Agentomics-ML helps clearly: Haiku and DeepSeek score higher with it
+at both reasoning settings, and Sonnet with reasoning \texttt{high}. The simplest explanation, that agents skip the skill's checks, does not hold: sixteen of the eighteen
+skill runs ran the check script on every iteration and passed it (\cref{sec:limitations}). What differs is who
+drives the procedure. Agentomics-ML gives each stage its own model turn and sends a script that fails back to the
+step that wrote it; under the skill one model turn carries the whole task. The single-shot comparison
+(\cref{tab:single}) points the same way: the state machine's advantage is largest on the first iteration, before the
+agent has had a chance to correct its own course. What each method carries from one iteration to the next may explain
+why the skill then catches up: the skill's agent keeps its whole conversation, while each state-machine step starts
+afresh from a written summary of the earlier iterations (\cref{sec:conditions}). We did not test this directly.
+
+Qwen 3.5 122B and GPT-4.1 are the exceptions, each in one of its two pairs. Qwen with reasoning \texttt{none} scored higher
+with the skill; its state-machine run made no validation progress after its first iteration. GPT-4.1 scored
+higher with the skill at both settings, completing three iterations where one of its state-machine runs failed the third; with
+one run per setting the gap should not be over-read.
+
+\paragraph{Reasoning and structure.} A state machine can be read as reasoning done in advance: the order of work and
+the points at which to check it are decided before the model starts. If so, a model's own reasoning should matter more
+under the skill, where that planning is left to it. The data do not settle it. With reasoning
+\texttt{high} the skill's mean score rises by \SkillReasonGain{} (from \SkillNoneMean{} to \SkillHighMean), the state
+machine's by \SmReasonGain{} (from \SmNoneMean{} to \SmHighMean); reasoning raised the score for \SkillHighWins{} of the 9 models
+under the skill and \SmHighWins{} of the 9 under the state machine. The single-shot comparison shows the same pattern
+more sharply: on a first attempt, before any feedback, the state machine's structure is worth the most.
+
+The iteration analysis has a practical consequence: a two-iteration budget would have captured most of the
+performance for about half the training time (\cref{tab:budget}).
+
+\paragraph{What enforced structure buys.} A recurring question about harness-based agents is whether their structural
+guarantees are worth the added complexity compared to a well-written skill or prompt. This experiment offers three observations
+on that question. First, enforced structure matters for mid-range models: Sonnet, Haiku and DeepSeek all score
+higher with Agentomics-ML, although the skill runs ran the same checks themselves. Second, no run could have seen the test labels while it was training, under either method. The skill makes the
+test set a hand-over by the person: the agent finishes its iterations, reports, and only then is given the test
+inputs, without labels, to predict on once. The state machine does the same in code: inputs and labels arrive after
+the last iteration, for the harness's own final scoring step, when no model step remains; none of the tool calls those
+runs made refers to the test upload. Both designs keep the test set out of reach by releasing it late;
+the harness enforces the moment, and the skill leaves it to the person. Third, all reported scores were computed from the prediction files the runs wrote, not from anything the model
+reported, so metric correctness is independently verified in both conditions. What the experiment does not address is whether
+Agentomics-ML's step-wise context management helps or hurts; a direct comparison of full-context and step-wise
+execution is a natural next step.
+
+\paragraph{Cost.} The cost gap between the two conditions is large enough to matter in practice. The skill's eighteen
+runs cost \SkillCost{} in total, Agentomics-ML's \SmCost{}. Much of the difference is structural: Agentomics-ML starts
+a fresh model turn for each of its five model states per iteration, each carrying its own context, while the agent
+works through the full task in a single turn. Within each condition, model tier is the dominant cost driver: top-of-line
+models averaged \FlagSkillAvgCost{} per skill run and \FlagSmAvgCost{} per Agentomics-ML run, while mid-range models
+averaged \SmallSkillAvgCost{} and \SmallSmAvgCost{} respectively. Fable 5.2 with reasoning \texttt{high} stands out at \FableSkillHighCost{} (skill) and \FableSmHighCost{}
+(Agentomics-ML, over the two runs its record sums), driven by its large reasoning-token budget; DeepSeek V4.1 Flash, at the other extreme,
+averaged under \$0.25 per run. For top-of-line models with reasoning enabled, where test performance is equivalent, the
+skill is the more resource-efficient choice. For mid-range models, where Agentomics-ML scores higher, the extra cost
+buys the enforced structure. Anyone choosing a configuration should weigh score and cost together.

@@ -1,0 +1,196 @@
+\section{Results}\label{sec:results}
+
+\subsection{Test performance}
+
+The results divide by model tier. Top-of-line models score \FlagScoreMin--\FlagScoreMax{} across all
+conditions and both methods: for these models the method makes little practical difference. Mid-range models
+vary more (\SmallScoreMin--\SmallScoreMax); here the state machine wins more often. \Cref{tab:matrix} gives the score of every run and \cref{fig:scores}
+plots them; \cref{tab:pairs} compares the two methods pair by pair with 95\% confidence intervals. Cost and time are
+in \cref{sec:cost}.
+
+\begin{table}[tbp]\centering\small
+\caption{Test AU-PRC (average precision) by model, method and reasoning effort. Each model's best run is marked in
+bold; the best overall is marked bold and underlined. $^{\dagger}$: a repeated run (\cref{sec:repeats}).
+$^{\ddagger}$: test predictions produced by hand from the run's selected model (\cref{sec:limitations}).}
+\label{tab:matrix}
+\MatrixTable
+\end{table}
+
+\begin{figure}[tbp]\centering
+\input{figures/scores}
+\caption{Test AU-PRC of every run. Circles: skill; squares: state machine (Agentomics-ML). Filled: reasoning \texttt{high}; open: reasoning \texttt{none}. The bar through each marker is the run's 95\% bootstrap
+interval (test-set sampling only).}
+\label{fig:scores}
+\end{figure}
+
+
+\begin{table}[tbp]\centering\small
+\caption{Paired comparison on the test set. SM: state machine (Agentomics-ML). $\Delta$: SM minus skill. 95\% CI:
+percentile interval over 2,000 paired bootstrap resamples; $\Delta$ in bold where the interval excludes zero.
+The interval reflects test-set sampling only, not run-to-run variation (\cref{sec:limitations}). $^{\dagger}$,
+$^{\ddagger}$: as in \cref{tab:matrix}.}
+\label{tab:pairs}
+\PairTable\\[0.4em]
+\PairTableNote
+\end{table}
+
+\paragraph{Score uncertainty.} Each run is evaluated on the same 1,018 held-out test examples, and those specific examples introduce sampling variation: a model that scores 0.80 on this test set might score differently on a different draw from the same distribution. To quantify this, we resampled the test set 2,000 times with replacement and recomputed AU-PRC each time; the central 95\% of that distribution gives a confidence interval for the run's score. For a typical run, this interval extends roughly \CIHalfMed{} in each direction, so a difference of that size or smaller between two rows of \cref{tab:matrix} may reflect the particular test examples rather than a genuine performance gap.
+
+The paired comparison in \cref{tab:pairs} is more reliable for judging the two methods head to head: because both methods are scored on the same test examples, most of that sampling noise cancels in the difference. Across the \WilcoxonN{} model-and-reasoning pairs, the state machine is clearly better in \PairsSm{}, the skill in \PairsSkill{}, and \PairsTie{} are indistinguishable. Taken together, neither method has a clear overall edge (Wilcoxon signed-rank test, $p=\WilcoxonP$, median difference \MedianDiff{}): the state machine's wins on three mid-range models are offset by ties on top-of-line models and by the pairs the skill wins. With the original runs in place of the nine repeats the counts are \OrigPairsSm{}, \OrigPairsSkill{} and \OrigPairsTie{} ($p=\OrigWilcoxonP$; \cref{sec:repeats}).
+
+\paragraph{Top-of-line models perform alike under both methods.} With reasoning
+\texttt{high}, all \FlagHighTies{} top-of-line pairs are ties, the largest difference being \FlagHighMax. With reasoning
+\texttt{none}, the state machine is ahead for Fable and Astra; the
+skill catches up once the model reasons.
+
+\paragraph{Mid-range models gain from the state machine, with exceptions.} Among the other five models the state
+machine is clearly better in \SmallSm{} of \SmallPairs{} pairs (Haiku and DeepSeek at both settings, and Sonnet with reasoning \texttt{high}) and the
+skill in \SmallSkill{}: Qwen 3.5 122B and GPT-4.1, both with reasoning \texttt{none}. The
+remaining three pairs, Sonnet with reasoning \texttt{none} and Qwen and GPT-4.1 with reasoning \texttt{high}, are ties
+(\cref{tab:pairs}; GPT-4.1 is discussed in \cref{sec:agentomics}).
+
+Higher reasoning effort improved test AU-PRC in \HighWins{} of the \HighPairs{} model--method pairs, which is not distinguishable
+from chance. The best single run was \BestCell, at \BestScore.
+
+\subsection{Iterations}\label{sec:iterations}
+
+\Cref{fig:itermeans} shows the mean test AU-PRC of the model a run would have submitted after one, two and three
+iterations, for each tier, method and reasoning setting. \Cref{fig:iterations} shows every model separately, and \cref{tab:iterations} in \cref{app:tables} gives the
+numbers, the iteration each run submitted and the iteration whose model scored best on test.
+
+\begin{figure}[tbp]\centering
+\input{figures/itermeans}
+\caption{Mean test AU-PRC of the model a run would have submitted after 1, 2 and 3 iterations, by model tier. Circles:
+skill; squares: state machine (Agentomics-ML). Solid lines and filled markers: reasoning \texttt{high}; dashed lines
+and open markers: reasoning \texttt{none}. Both panels share one y-axis; the dotted line is the human state of the art (0.860). A run with no working model yet is left out
+of that point's mean, and a run with fewer iterations keeps what it ended with. \Cref{fig:iterations} shows every model separately.}
+\label{fig:itermeans}
+\end{figure}
+
+\begin{figure}[tbp]\centering
+\input{figures/iterations}
+\caption{Test AU-PRC of the model each run would have submitted after 1, 2 and 3 iterations, one panel per model.
+Circles: skill; squares: state machine (Agentomics-ML). Solid lines and filled markers: reasoning \texttt{high};
+dashed lines and open markers: reasoning \texttt{none}. Dotted line: the human state of the art (0.860), where a
+panel's range reaches it. Each panel has its own y-axis, so slopes compare within a panel, not across panels;
+points are nudged sideways so that equal scores stay apart.}
+\label{fig:iterations}
+\end{figure}
+
+Most of the gain arrives by the second iteration. Top-of-line models mostly start at 0.85--0.89 and add 0.01--0.04 afterwards; the exceptions are Astra and Gemini with
+reasoning \texttt{none}, which start between 0.69 and 0.83, and Astra under the state machine with reasoning \texttt{high} (0.76). Mid-range models make their largest step at iteration 2
+(Haiku rises from 0.44--0.58 to 0.67--0.74). Later iterations
+can be by far the most expensive: DeepSeek under the state machine with reasoning \texttt{none} had 0.881 after seven
+minutes, and its second and third iterations took a further 140 minutes without improving on it.
+
+\paragraph{Single shot.} \Cref{tab:single} compares the two methods after the first iteration only, as if each run had
+been given one attempt, pair by pair and with the same paired bootstrap as \cref{tab:pairs}. Seventeen of the eighteen pairs can be compared this way; the eighteenth is Gemini with reasoning \texttt{none},
+whose skill run had no working model after its first iteration. Among the seventeen the state machine is the stronger
+single shot: it is clearly ahead in \FirstCiSm{}, the skill in \FirstCiSkill{}, and \FirstCiTie{} are ties (Wilcoxon
+signed-rank test, $p\FirstWilcoxonP$, median difference \FirstMedianDiff). The advantage is clearest among mid-range models:
+\FirstMidCiSm{} of the \FirstMidCiPairs{} mid-range pairs, against \FirstFlagCiSm{} of the \FirstFlagCiPairs{}
+top-of-line pairs. On average the state machine's first model scores \FirstSmMean{} and the skill's \FirstSkillMean{}.
+
+The skill catches up once it is allowed to iterate. After one iteration the state machine leads by \FirstGap{} on
+average; by the end its lead is \FinalGap. Mid-range models have the most to gain from iterating: their later
+iterations add \FirstSmallGain{} on average, against \FirstFlagGain{} for top-of-line models. For many runs a single
+attempt is already enough to be competitive: \FirstAboveSota{} of the \FirstRuns{} first models beat the human state
+of the art.
+
+\begin{table}[tbp]\centering\small
+\caption{Single-shot comparison: test AU-PRC of the model each run had after its first iteration. SM: state machine
+(Agentomics-ML). $\Delta$: SM minus skill, with a 95\% paired bootstrap interval as in \cref{tab:pairs}; bold where the
+interval excludes zero. N/A: no working model after the first iteration. $^{\dagger}$, $^{\ddagger}$: as in
+\cref{tab:matrix}.}
+\label{tab:single}
+\FirstPairTable
+\end{table}
+
+\paragraph{How many iterations.} \Cref{tab:budget} shows what each method has after one, two and three iterations,
+and what share of its total cost and training time it has spent by then. Two iterations capture most of the result:
+stopping there lowers the mean score by \TwoLoss{} and uses \TwoCostShare\% of the cost and \TwoTimeShare\% of the
+training time. \TwoWithin{} of the \TwoRuns{} runs with a model after two iterations are already within 0.005 of their
+final score.
+
+\begin{table}[tbp]\centering\small
+\caption{Iteration budget: the mean test AU-PRC each method has after one, two and three iterations (the model a run
+would have submitted at that point), with the share of the method's total cost and training time spent by then. A run
+with fewer iterations keeps what it ended with.}
+\label{tab:budget}
+\BudgetTable
+\end{table}
+
+\paragraph{A run does not always submit its best model.} Each run submits the iteration that scored highest on its
+own validation data, since it never sees the test set. That is usually, but not always, the iteration that scores
+highest on test: the two agree in \PickedBest{} of the \ScoredRuns{} runs. The clearest miss is GPT-4.1 under the state
+machine with reasoning \texttt{high}. Its second iteration scored 0.752 on test, but its third scored slightly higher
+on validation (0.721 against 0.705) and was submitted instead, at 0.726.
+In the other runs where the two disagree, the cost is at most 0.020.
+
+\subsection{Comparison with Agentomics-ML}\label{sec:agentomics}
+
+\Cref{tab:agentomics} sets our GPT-4.1 runs beside those published for Agentomics-ML \citep{martinek2025agentomics} on
+the same dataset and the same train/test split, with average precision, the metric used here. We make this comparison
+for GPT-4.1 only, the model the published results use: the other models here are newer, and setting their scores
+against the published ones would measure the models, not the method.
+
+\begin{table}[tbp]\centering\small
+\caption{Test AU-PRC (average precision) of GPT-4.1 on AGO2 CLASH. Agentomics-ML as reported by
+\citet{martinek2025agentomics}, arXiv v1, over five runs per configuration. This study: two runs per method.}
+\label{tab:agentomics}
+\begin{tabular}{@{}l l r r@{}}\toprule
+\textbf{Method} & \textbf{Model} & \textbf{Mean} & \textbf{Best}\\\midrule
+Agentomics-ML, no feedback & GPT-4.1 & 0.698 & 0.724\\
+Agentomics-ML & GPT-4.1 & 0.726 & 0.778\\\midrule
+State machine (this study) & GPT-4.1, 2 runs & \GptSmMean & \GptSmBest\\
+Skill (this study) & GPT-4.1, 2 runs & \GptSkillMean & \GptSkillBest\\
+\bottomrule\end{tabular}
+\end{table}
+
+\paragraph{GPT-4.1 under both methods.} GPT-4.1 is the one model both studies share; all four of its runs here are
+repeats made with Agentomics-ML 1.2.0 and the second skill agent (\cref{sec:repeats}). Under the state machine it scored
+\GptSmNone{} and \GptSmHigh{} (two runs that are in effect repeats, \cref{sec:models}); in the first, the third iteration
+failed its checks and the second was submitted. \GptSmHigh{} equals the mean Agentomics-ML reports for GPT-4.1 (means
+of 0.698 and 0.726, best run 0.778) and \GptSmNone{} falls just below it, so our runs are broadly consistent with the
+published result on the one model the two share.
+
+Under the skill it scored \GptSkillNone{} and \GptSkillHigh{}, completing all three iterations in both runs for
+\$5.92 and \$0.33, against \$1.50 and \$2.10 with the state machine. The skill is ahead in both pairs; the interval
+of the pair at reasoning \texttt{high} includes zero (\cref{tab:pairs}). The oldest model here therefore did not need
+the harness on this task: it followed the written procedure to the end and scored at least as well as with enforced
+steps.
+
+\subsection{Cost and time}\label{sec:cost}
+
+The skill used \SkillCost{} and \SkillTime{} over its eighteen runs, \CostRatio{} of the cost and \TimeRatio{} of the
+time of the state machine (\SmCost{} and \SmTime). The difference comes mostly from the number of model calls
+(\SkillCalls{} against \SmCalls): the state machine starts a fresh model turn at every step, each with its own context,
+whereas the agent works through the task in one turn. One state-machine record, Fable with reasoning \texttt{high},
+sums two runs and accounts for \FableSmHighCost{} of that total (\cref{sec:limitations}). \Cref{fig:time} shows the cost and training time of every run and how the time divides across iterations;
+\cref{tab:cost,tab:time} give the numbers.
+
+\begin{table}[tbp]\centering\small
+\caption{Cost per run in USD, as billed by OpenRouter. Each model's cheapest run is marked in bold; the cheapest overall
+is marked bold and underlined.}
+\label{tab:cost}
+\CostTable
+\end{table}
+
+\begin{table}[tbp]\centering\small
+\caption{Training time per run in minutes: model time plus code time up to the end of the last iteration (\cref{sec:accounting}). Each model's fastest run is marked in
+bold; the fastest overall is marked bold and underlined.}
+\label{tab:time}
+\TimeTable
+\end{table}
+
+\begin{figure}[tbp]\centering
+\input{figures/time}
+\caption{Cost and training time of every run. Runs group by model, four per model (skill or state machine, reasoning
+\texttt{none} or \texttt{high}). Left: cost in USD; middle: training time in minutes; both on log scales, with the
+value beside each marker (circles: skill, squares: state machine, filled: reasoning \texttt{high}). Right: how the
+training time divides across iterations 1, 2 and 3. The state machine records the iteration it is in; for a skill run
+an iteration is taken to end when the agent first writes into the next iteration's folder, so its split is
+approximate. DeepSeek's state-machine run with reasoning \texttt{high} stopped during its second iteration, and Gemini's skill run with
+reasoning \texttt{none} took five, the last three drawn together.}
+\label{fig:time}
+\end{figure}

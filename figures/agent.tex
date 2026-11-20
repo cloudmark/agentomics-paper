@@ -1,0 +1,38 @@
+% Skill-condition agent: one state machine state (Model turn) and the skill it loads.
+\begin{tikzpicture}[x=2.6cm, y=1.5cm,
+    >={Latex[length=2.4mm, width=1.5mm]}, font=\footnotesize,
+    every node/.style={align=center},
+    model/.style={draw=black, line width=0.75pt, rounded corners=3pt,
+                  fill=black!13, minimum width=2.1cm, minimum height=0.78cm},
+    code/.style={draw=black!45, line width=0.5pt, rounded corners=3pt,
+                 fill=white, minimum width=2.1cm, minimum height=0.78cm},
+    doc/.style={draw=black!50, line width=0.55pt, rounded corners=3pt,
+                fill=black!3, minimum width=2.1cm, minimum height=0.78cm,
+                densely dotted},
+    edge/.style={->, draw=black!70, line width=0.6pt},
+    lbl/.style={font=\scriptsize, inner sep=2pt, fill=white}]
+
+  \node[code]  (wait)  at (0,0)    {Await\\message};
+  \node[model] (turn)  at (1.5,0)  {Model turn};
+  \node[code]  (reply) at (3,0)    {Reply};
+  \node[doc]   (skill) at (1.5,-1.1)
+      {\texttt{ml-research}\\[-2pt]{\scriptsize\texttt{SKILL.md}}};
+
+  % main flow
+  \draw[edge] (wait)  -- (turn);
+  \draw[edge] (turn)  -- (reply);
+
+  % wrap-around back to Await message
+  \draw[edge] (reply.north) -- ++(0,0.9) -|
+      node[lbl, above, pos=0.22] {next message from the person: the task, then the test inputs} (wait.north);
+
+  % self-loop for tool calls
+  \draw[edge] ($(turn.north west)+(0.12,0)$)
+      .. controls +(0,0.65) and +(0,0.65) ..
+      node[above=3pt, font=\scriptsize] {tool call (${\le}600$ rounds)}
+      ($(turn.north east)+(-0.12,0)$);
+
+  % skill loaded on demand
+  \draw[->, draw=black!50, line width=0.55pt, densely dotted]
+      (skill.north) -- node[lbl, right=2pt] {loaded on demand} (turn.south);
+\end{tikzpicture}

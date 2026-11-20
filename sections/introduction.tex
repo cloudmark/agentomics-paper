@@ -1,0 +1,28 @@
+\section{Introduction}\label{sec:intro}
+
+Agents that carry out machine-learning research on their own are usually built as harnesses. The harness fixes the
+order of work (plan, explore, train, predict, evaluate), checks each artefact before moving on, and keeps the best
+model. The language model fills in each step but does not decide what happens next. This structure makes runs
+predictable and checkable, but it is costly to build, specific to one kind of task, and spends model calls on every
+step whether the model needs them or not.
+
+Agent skills offer a lighter alternative: a short document describing how to do a task, loaded by a general-purpose agent when the task calls for it. Nothing forces the agent to follow it.
+
+The question is whether the control a harness provides is still needed as models improve. One plausible answer is that
+it depends on the model: mid-range models need the direction, while top-of-line models do as well, or better, with
+guidance alone. This report tests that hypothesis, grouping models by each provider's own line-up rather than by
+their results.
+
+We hold the task, the data, the procedure and the budget of model rounds fixed, and vary three things: whether the procedure is
+enforced by a harness or written as a skill, which model runs it, and the model's reasoning effort. The contributions
+are:
+\begin{itemize}
+\item a controlled comparison of a state-machine harness and a skill on the same research task, across nine models
+  and two reasoning settings (\cref{sec:results});
+\item an iteration-level analysis, re-scoring the model each run would have submitted after one, two and three
+  iterations, including a single-shot comparison of the two methods (\cref{sec:iterations});
+\item an audit of how closely the agents followed the skill's written procedure (\cref{sec:limitations});
+\item an account of cost and training time per run (\cref{sec:cost});
+\item a check against the published Agentomics-ML results for GPT-4.1, the one model the two studies share
+  (\cref{sec:agentomics}).
+\end{itemize}

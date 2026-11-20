@@ -1,0 +1,143 @@
+\section{Methods}\label{sec:methods}
+
+\subsection{Task and data}\label{sec:data}
+
+Each example pairs a microRNA sequence with a 50-nucleotide target site and is labelled 1 if the two bind in AGO2
+CLASH data and 0 otherwise. The training set holds 8,140 class-balanced pairs; a further 1,018
+test pairs were held back. Each run splits the training set into training and validation data (80/20). In the
+Agentomics-ML condition Agentomics-ML makes a seeded, stratified split before the model starts; in the skill condition
+the agent makes it, following the skill's instruction to seed the split.
+
+The test pairs were released to a run only after its last iteration: as inputs without labels in the skill condition,
+and with their labels in the state-machine condition, where the harness's final step scores the model itself
+(\cref{sec:limitations}). Every run then wrote a
+predictions file, which we scored independently (\cref{sec:evaluation}); for \HandCount{} runs that ended before this
+step we ran the selected model's inference script ourselves (\cref{sec:limitations}).
+
+\subsection{Conditions}\label{sec:conditions}
+
+Both conditions are state machines running on the same agent runtime, with the same tools for reading, writing and
+executing files in a sandboxed workspace. Neither has a web search tool. The workspace has internet access, which the
+agents used to install Python libraries; no run downloaded data or a pretrained model. The two conditions differ in
+what the machine decides (\cref{fig:machines}). Nine runs were later repeated with a second implementation
+(\cref{sec:repeats}); the rest of this subsection describes the original runs.
+
+\begin{figure}[tbp]\centering
+\begin{subfigure}{\linewidth}\centering
+\input{figures/harness}
+\caption{State-machine condition: the Agentomics-ML procedure.}\label{fig:harness}
+\end{subfigure}
+
+\vspace{1.2em}
+\begin{subfigure}{\linewidth}\centering
+\input{figures/agent}
+\caption{Skill condition: a general-purpose agent with the \texttt{ml-research} skill.}\label{fig:agent}
+\end{subfigure}
+\caption{State diagrams of the two conditions. Shaded states are model turns; white states are deterministic code. In
+(a), a failed check returns control to the model state that produced the script, at most three times per step; $i$ is
+the iteration number. In (b), all control flow inside a turn is decided by the model; the skill is text the model may
+load and follow. In both, the person hands over the test set only after the last iteration.}
+\label{fig:machines}
+\end{figure}
+
+\paragraph{State machine (Agentomics-ML).} The state-machine condition implements the Agentomics-ML procedure on our
+agent runtime. It has eleven states (\cref{fig:harness,tab:states}). Five are model
+turns, each limited to 40 rounds (a round is one model call and the tool calls it requests). The other six are the
+harness's own code: it sets up the data, runs the model's \texttt{train.py} and \texttt{inference.py} on a small split,
+checks that predictions have the expected format, scores validation and training data, and keeps the best model so far.
+A failed check returns the model to the step that produced the faulty script, up to three times; after that, the
+iteration is recorded as failed. Every model turn starts a new conversation. Within an iteration a step is given the
+written answers of the steps before it; the planning step of a new iteration is given a history of the finished ones:
+each one's plan, its reports on training and inference, its analysis and its validation and training scores. The
+files of earlier iterations remain in the workspace for the model to read. After three iterations the harness asks the person for the test set, a
+human-in-the-loop step, scores the best model once and writes a report. Three iterations was chosen as a balance between performance and cost.
+
+\begin{table}[tbp]\centering\small
+\caption{States of Agentomics-ML (\cref{fig:harness}).}\label{tab:states}
+\begin{tabular}{@{}l l p{9.2cm}@{}}\toprule
+State & Executed by & Action\\\midrule
+Setup & harness & Seeded, stratified 80/20 split; writes a small training subset for checks; installs libraries.\\
+Plan & model & Decides what to try in this iteration.\\
+Explore & model & Inspects the data and reports findings.\\
+Train & model & Writes and runs \texttt{train.py}.\\
+Check train & harness & Re-runs \texttt{train.py} on the small subset.\\
+Infer & model & Writes \texttt{inference.py}.\\
+Check inference & harness & Runs \texttt{inference.py} on the small subset and checks the predictions' format.\\
+Validate & harness & Scores validation and training data; copies the best iteration so far to \texttt{best/}.\\
+Analyse & model & Reviews the iteration and proposes changes for the next.\\
+Final evaluation & harness & Asks the person for the test set (human in the loop) and scores the best model once.\\
+Report & harness & Writes \texttt{metrics.json} and \texttt{report.md}.\\
+\bottomrule\end{tabular}
+\end{table}
+
+\paragraph{Skill.} The skill condition uses a general-purpose agent with a single state (\cref{fig:agent}): it waits for
+a message, takes one turn of up to 600 rounds, and replies. 600 rounds equals the harness's total budget (40 rounds,
+five model steps, three iterations); cost and time were not fixed, and are outcomes. The agent's system prompt names its tools and tells it to load a skill when one
+covers the task; apart from the skill's one-line description it contains nothing about machine learning. The skill, \texttt{ml-research}, describes the same
+procedure as the harness (\cref{app:repro}): a seeded split, a check run the same way the test will be, three
+iterations with the best chosen on validation, and a test step. It ships scripts for the split, the check and the
+scoring, but the agent decides whether to run them; nothing outside the agent enforces the procedure. The test set
+enters through a human-in-the-loop step here too: when the agent reports that its iterations are done, the person
+gives it the test inputs, without labels, and it predicts once with the model it selected. In our runs a script
+answered these requests in the person's place, through the runtime's AG-UI interface \citep{agui2025}, the protocol by which an agent asks its user for
+input, and in the same way for every run of both conditions. The agent keeps one
+conversation for the whole task, so each iteration is carried out with everything from the earlier ones in view.
+The runtime would prune older tool outputs and summarise earlier turns if a prompt filled 80\% of the model's context
+window; no original skill run came near that, the largest prompt being about 105,000 tokens.
+
+\subsection{Models and reasoning effort}\label{sec:models}
+
+Nine models were used, all through OpenRouter: Claude Fable 5.2, Claude Opus 5.5, GPT-6.2 Astra, Gemini 4 Hydrogen,
+Claude Sonnet 5.5, Qwen 3.5 122B-A10B, Claude Haiku 4.5, DeepSeek V4.1 Flash and GPT-4.1. We group them into
+\emph{top-of-line} models (Fable 5.2, Opus 5.5, Astra, Hydrogen), each being the highest-capability offering from its
+provider's current line-up at the time of the experiment, and \emph{mid-range} models (Sonnet 5.5, Qwen 3.5 122B-A10B,
+Haiku 4.5, DeepSeek V4.1 Flash, and GPT-4.1, an earlier-generation model included because the published Agentomics-ML
+results use it); we use this grouping in the analysis. Each ran under both conditions with
+the reasoning-effort setting at \texttt{none} and at \texttt{high} (the largest thinking budget), giving
+$9 \times 2 \times 2 = 36$ runs. Our runtime sends \texttt{none} to OpenRouter as a request for minimal effort, and
+providers map the field to their own token budgets, so \texttt{none} did not switch reasoning off: only Astra and
+GPT-4.1 produced no reasoning tokens with it (\cref{tab:runs}). GPT-4.1 does
+not reason: it produced no reasoning tokens at either setting, so its two runs per method are in effect repeats.
+
+\subsection{Repeated runs}\label{sec:repeats}
+
+Nine of the 36 runs reported here are repeats, made on 20--21 November 2026 with a second implementation of the two
+conditions: all four GPT-4.1 runs, both Astra runs with reasoning \texttt{high}, and the state-machine runs of Opus,
+Gemini and Sonnet with reasoning \texttt{none}. They were chosen after their test scores were known: the GPT-4.1
+state-machine runs had both ended after two iterations, the state-machine runs of Opus and Sonnet had a validation
+score far above their test score, that of Gemini had been completed by hand, and Astra's skill score with reasoning
+\texttt{high}, below its state-machine score, was unexpected. A repeat replaces the original run in every table and
+figure; \cref{tab:repeats} gives both scores, and repeats are marked in \cref{tab:matrix,tab:pairs,tab:runs}.
+
+\begin{table}[tbp]\centering\small
+\caption{The nine repeated configurations: test AU-PRC of the original run and of the repeat that replaces it, with the
+number of iterations that produced a scored model (It.). $\Delta$: repeat minus original.}
+\label{tab:repeats}
+\RepeatTable
+\end{table}
+
+The second implementation runs Agentomics-ML 1.2.0 from its published container image, with the reasoning effort set
+on every request and a failing script returned to its step three times, not its default five, its tool for fetching papers switched off, and a second
+general-purpose agent for the skill. It differs from the original in its steps (Agentomics-ML 1.2.0 has eight model
+steps per iteration), its round limits (100 per step and 1,500 for the skill agent), its split (made once by the
+skill's setup script for both conditions), its prompts (Agentomics-ML used its default task prompt) and its time
+accounting (elapsed time to the end of the last iteration). It sends the reasoning setting as given; OpenRouter refused
+\texttt{none} for Opus, Gemini, Sonnet and Astra, so the state-machine repeats of Opus and Gemini ran at
+\texttt{minimal}, the value their originals had been sent, and that of Sonnet at \texttt{low}, and Astra's runs with
+reasoning \texttt{none} remain the originals.
+
+\subsection{Evaluation}\label{sec:evaluation}
+
+The primary outcome is test AU-PRC (average precision), computed from each run's predicted class probabilities on the held-out test set. We also report test accuracy from the run's own hard label predictions and, where available, training accuracy. The test set was never given to an agent while it was training; once all runs had finished, we collected each run's prediction file and scored it in a single controlled step, outside the agent environment, to ensure consistent evaluation conditions across all runs.
+
+To study iterations, we re-ran each iteration's saved model on the test inputs in a single controlled environment,
+pinned to the library versions the original runs used. As a consistency check we also recomputed each run's validation AU-PRC; every value
+matched the run's own record to four decimal places. The model a run would have submitted after $k$ iterations is the
+one with the best validation score among its first $k$, which is the selection rule both conditions use.
+
+\subsection{Cost and time}\label{sec:accounting}
+
+Cost is the amount OpenRouter billed for each call, summed per run. Time is training time: the time the model spent
+answering plus the time the run's commands took (feature building, training, and the checks and scoring of each
+iteration, whether the agent or the harness ran them), up to the end of the last iteration. Time in which neither the
+model nor a command was working is not counted, and neither is the final evaluation on the test set.
