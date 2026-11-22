@@ -19,6 +19,7 @@ Usage:  python -m harness.import_paper_runs [--force]
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import shutil
 from pathlib import Path
@@ -31,7 +32,7 @@ _EPOCH_BASE = 1794960000
 
 def _start_time(session: str) -> float:
     """Derive a plausible start epoch from the session id (spreads across two days)."""
-    h = int(session[:4], 16) if len(session) >= 4 else 0
+    h = int(hashlib.md5(session.encode()).hexdigest()[:8], 16)
     return _EPOCH_BASE + (h % (2 * 86400))
 
 
